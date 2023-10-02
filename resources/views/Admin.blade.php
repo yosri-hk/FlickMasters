@@ -51,6 +51,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/articles" class="nav-link">Article</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
