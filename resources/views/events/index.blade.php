@@ -338,7 +338,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/pages/tables/simple.html" class="nav-link">
+                    <a href="{{ route('events.create') }}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Ajouter Evenement</p>
                     </a>
