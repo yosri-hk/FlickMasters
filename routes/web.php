@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -38,6 +41,7 @@ Route::delete('/deleteArticle/{article}/delete',[ArticleController::class,'delet
 
 //Products 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::resource('orders',OrderController::class );
 
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
@@ -46,5 +50,16 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
 Route::delete('/products/{product}', [ProductController::class, 'delete'])->name('products.delete');
+//Users
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+
+Route::delete('/users/{user}',[UserController::class,'destroy'])->name('users.delete');
+
+// Route configuration for Event entity
+Route::resource('events', EventController::class);

@@ -15,6 +15,11 @@
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
 
+<!-- bootstrap mta3i -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- bootstrap mta3i -->  
+  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
+
 
 
 
@@ -192,11 +197,8 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/rim_img.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Rim Ben Saad</a>
-
         </div>
       </div>
 
@@ -241,7 +243,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -256,46 +258,23 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-shopping-bag"></i>              
+              <i class="nav-icon fas fa-tree"></i>
               <p>
                 Produit
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ajouter Produit</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Afficher Liste</p>
-                </a>
-            </li>
-        </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Ordre
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/orders/create" class="nav-link">
+                <a href="/pages/UI/general.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Ordre</p>
+                  <p>Ajouter Produit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/orders" class="nav-link">
+                <a href="/pages/UI/icons.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Ordre</p>
+                  <p>Afficher Liste</p>
                 </a>
               </li>
             </ul>
@@ -372,6 +351,61 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+            <!-- ajouter article -->
+            <div id="ajouterContent">
+            <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <h1 class="text-center">Formulaire d'Ajout d'un événement </h1>
+                <hr>
+                @if (session("status"))
+                <div class="alert alert-success">
+                  {{session("status")}}
+                </div>
+                @endif
+
+
+                <div>
+        @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+               </ul>
+               @endif
+               </div>
+
+               <form action="{{ route('events.store') }}" method="POST">
+    @csrf
+    <div class="mb-3">
+        <label for="nom" class="form-label">Nom de l'événement</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="date_debut" class="form-label">Date de début</label>
+        <input type="date" class="form-control" id="start_date" name="start_date" required>
+    </div>
+    <div class="mb-3">
+        <label for="date_fin" class="form-label">Date de fin</label>
+        <input type="date" class="form-control" id="end_date" name="end_date" required>
+    </div>
+    <div class="mb-3">
+        <label for="localisation" class="form-label">Localisation</label>
+        <input type="text" class="form-control" id="location" name="location" required>
+    </div>
+    <div class="mb-3">
+        <label for="prix_entree" class="form-label">Prix d'entrée</label>
+        <input type="number" class="form-control" id="entry_price" name="entry_price" required>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-right:20px">Ajouter</button>
+    <a class="btn btn-warning" href="{{ route('events.index') }}">Revenir à la liste d'événements</a>
+</form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            </div>
+            <!-- ajouter article -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
