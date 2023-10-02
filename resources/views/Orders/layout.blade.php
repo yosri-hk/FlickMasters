@@ -192,10 +192,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/img08.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
+          <a href="/admin" class="d-block">Yosri Haj Khlifa</a>
         </div>
       </div>
 

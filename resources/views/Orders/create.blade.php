@@ -1,13 +1,43 @@
 @extends('Orders.layout')
 @section('content')
-<section class="content">
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
     <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="panel panel-default">
-            <div class="panel-heading"><h1>Create Order</h1></div>
-  
-            <div class="panel-body">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0"></h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+<section class="content">
+  <div class="container-fluid">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <!-- ajouter article -->
+        <div id="ajouterContent">
+        <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <h1 class="text-center">Formulaire ajout d'ordre</h1>
+            <hr>
+            @if (session("status"))
+            <div class="alert alert-success">
+              {{session("status")}}
+            </div>
+            @endif
+
+
+            <div>
+    @if($errors->any())
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+           </ul>
+           @endif
+           </div>
               <form method="POST" action="{{ route('orders.store') }}">
                 @csrf
   
@@ -52,9 +82,22 @@
               </form>
             </div>
           </div>
-        </div>
       </div>
-    </div>
-  </section>
-  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+              </div>
+              <!-- ajouter article -->
+          </div>
+          <!-- /.row -->
+          <!-- Main row -->
+          <div class="row">
+            <!-- Left col -->
+            
+            <!-- /.Left col -->
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            <!-- right col -->
+          </div>
+          <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+      </section>
+</div>
 @endsection
