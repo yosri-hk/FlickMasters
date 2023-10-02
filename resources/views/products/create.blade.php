@@ -18,6 +18,8 @@
 
 
 
+
+
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
@@ -189,10 +191,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/rim_img.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
+          <a href="/admin" class="d-block">Rim Ben Saad </a>
         </div>
       </div>
 
@@ -237,7 +239,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -345,6 +347,68 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+            <!-- ajouter article -->
+            <div id="ajouterContent">
+            <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <h1 class="text-center">Ajouter Votre Produit</h1>
+                <hr>
+                @if (session("status"))
+                <div class="alert alert-success">
+                  {{session("status")}}
+                </div>
+                @endif
+
+
+                <div>
+        @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+               </ul>
+               @endif
+               </div>
+<form action="{{ isset($product) ? route('products.update', $product->id) : route('products.store') }}" method="POST">
+    @csrf
+    @if(isset($product))
+        @method('PUT') <!-- For editing an existing product -->
+    @endif
+    <div class="mb-3">
+        <label for="name" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="name" name="name" required value="{{ isset($product) ? $product->name : '' }}">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description">{{ isset($product) ? $product->description : '' }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" id="price" name="price" required min="0" step="0.01" value="{{ isset($product) ? $product->price : '' }}">
+    </div>
+    <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" required min="0" value="{{ isset($product) ? $product->quantity : '' }}">
+    </div>
+    <div class="mb-3">
+        <label for="weight" class="form-label">Weight</label>
+        <input type="number" class="form-control" id="weight" name="weight" min="0" value="{{ isset($product) ? $product->weight : '' }}">
+    </div>
+    <div class="mb-3">
+        <label for="image_url" class="form-label">Image URL</label>
+        <input type="url" class="form-control" id="image_url" name="image_url" value="{{ isset($product) ? $product->image_url : '' }}">
+    </div>
+    <button type="submit" class="btn btn-primary">{{ isset($product) ? 'Update' : 'Add' }} Product</button>
+    <a class="btn btn-warning" href="/products">Revenir à la liste de produits</a>
+</form>
+
+</div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            </div>
+            <!-- ajouter article -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
