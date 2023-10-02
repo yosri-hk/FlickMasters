@@ -1,3 +1,6 @@
+<!-- resources/views/layouts/app.blade.php -->
+ 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,9 +53,6 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/articles" class="nav-link">Article</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
       </li>
     </ul>
 
@@ -192,8 +192,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
+          <img src="/dist/img/img08.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
+          <a href="/admin" class="d-block">Yosri Haj Khlifa</a>
         </div>
       </div>
 
@@ -260,19 +262,19 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ajouter Produit</p>
+              <li class="nav-item">
+                <a href="/pages/UI/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Produit</p>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Afficher Liste</p>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/UI/icons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Liste</p>
                 </a>
-            </li>
-        </ul>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -330,13 +332,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('events.create') }}" class="nav-link">
+                <a href="/pages/tables/simple.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Evenement</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('events.index') }}" class="nav-link">
+                <a href="/pages/tables/data.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -356,9 +358,7 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
+          
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -366,21 +366,9 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
+        <div class="container">
+            @yield('content')
         </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>

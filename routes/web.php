@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
@@ -39,6 +40,7 @@ Route::delete('/deleteArticle/{article}/delete',[ArticleController::class,'delet
 
 //Products 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::resource('orders',OrderController::class );
 
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
