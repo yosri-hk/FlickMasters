@@ -15,6 +15,11 @@
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
 
+<!-- bootstrap mta3i -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- bootstrap mta3i -->  
+  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
+
 
 
 
@@ -189,10 +194,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/rim_img.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
+          <a href="/admin" class="d-block">Rim Ben Saad</a>
         </div>
       </div>
 
@@ -237,7 +242,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -259,6 +264,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/pages/UI/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Produit</p>
+                </a>
+                <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
                     <i class="far fa-circle nav-icon"></i>
@@ -272,6 +283,14 @@
                 </a>
             </li>
         </ul>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/UI/icons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Liste</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -340,11 +359,67 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
+<section class="content">
+    <div class="container-fluid">
+        <!-- Edit product -->
+        <div id="editProductContent">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-9">
+                        <h1 class="text-center">Modifier un Produit</h1>
+                        <hr>
+
+                        @if (session("status"))
+                            <div class="alert alert-success">
+                                {{ session("status") }}
+                            </div>
+                        @endif
+
+                        <div>
+                            @if($errors->any())
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+
+                        <form action="{{ route('products.update', ['product' => $product]) }}" method="POST">
+                            @csrf
+                            @method('PUT') <!-- Use the appropriate HTTP method (PUT) for updating -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nom du produit</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" required>{{ $product->description }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Prix</label>
+                                <input type="text" class="form-control" id="price" name="price" value="{{ $product->price }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantité</label>
+                                <input type="text" class="form-control" id="quantity" name="quantity" value="{{ $product->quantity }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="weight" class="form-label">Poids</label>
+                                <input type="text" class="form-control" id="weight" name="weight" value="{{ $product->weight }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-right: 20px">Modifier</button>
+                            <a class="btn btn-warning" href="/products">Revenir à la liste de produits</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            </div>
+            <!-- ajouter article -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
