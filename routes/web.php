@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 
@@ -35,3 +36,5 @@ Route::post('/updateArticle/{article}/traitement',[ArticleController::class,"upd
 Route::delete('/deleteArticle/{article}/delete',[ArticleController::class,'delete'])->name('article.delete');
 
 
+// Route configuration for Event entity
+Route::resource('events', EventController::class);
