@@ -14,23 +14,25 @@
                 @method('PUT')
   
                 <div class="form-group">
-                  <label for="order_date">Order Date</label>
-                  <input type="date" name="order_date" class="form-control" value="{{ $order->order_date }}" required>
+                  <label for="product_id">Product ID</label>
+                  <input type="text" name="product_id" class="form-control" value="{{ $order->product_id }}" required>
                 </div>
+  
   
                 <div class="form-group">
                   <label for="delivery_address">Delivery Address</label>
                   <input type="text" name="delivery_address" class="form-control" value="{{ $order->delivery_address }}" required>
                 </div>
   
-                <div class="form-group">
-                  <label for="product_id">Product ID</label>
-                  <input type="text" name="product_id" class="form-control" value="{{ $order->product_id }}" required>
-                </div>
-  
+               
                 <div class="form-group">
                   <label for="quantity">Quantity</label>
                   <input type="number" name="quantity" class="form-control" value="{{ $order->quantity }}" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="order_date">Order Date</label>
+                  <input type="date" name="order_date" class="form-control" value="{{ $order->order_date }}" required>
                 </div>
   
                 <div class="form-group">

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
-            $table->decimal('item_subtotal', 10, 2);
+           
             $table->timestamps();
              /*$table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');*/
