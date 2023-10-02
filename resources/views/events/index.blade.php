@@ -65,6 +65,9 @@
           <li class="nav-item d-none d-sm-inline-block">
             <a href="/articles" class="nav-link">Article</a>
           </li>
+          <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
+      </li>
         </ul>
 
         <!-- Right navbar links -->
@@ -341,7 +344,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/pages/tables/data.html" class="nav-link">
+                    <a href="{{ route('events.index') }}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Afficher Liste</p>
                     </a>

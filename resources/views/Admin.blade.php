@@ -192,10 +192,8 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
         </div>
       </div>
 
@@ -309,13 +307,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/pages/tables/simple.html" class="nav-link">
+                <a href="{{ route('events.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Evenement</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/pages/tables/data.html" class="nav-link">
+                <a href="{{ route('events.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
