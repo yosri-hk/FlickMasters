@@ -265,13 +265,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/pages/UI/general.html" class="nav-link">
+              <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Produit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/pages/UI/icons.html" class="nav-link">
+              <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>

@@ -14,11 +14,12 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-
-  <link href="{{ asset('ArticleCss/article.css') }}" rel="stylesheet">
-<!-- bootstrap mta3i -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- bootstrap mta3i  -->
+  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
+
+
+
+
 
 
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -240,7 +241,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -255,19 +256,13 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-shopping-bag"></i>              
               <p>
                 Produit
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/pages/UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Produit</p>
-                </a>
-                <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
                     <i class="far fa-circle nav-icon"></i>
@@ -281,14 +276,6 @@
                 </a>
             </li>
         </ul>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Liste</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -356,6 +343,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
 
 <section class="content">
     <div class="container-fluid">

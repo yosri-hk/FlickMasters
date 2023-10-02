@@ -192,8 +192,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
+          <img src="/dist/img/rim_img.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
+          <a href="/admin" class="d-block">Rim Ben Saad</a>
+
         </div>
       </div>
 
@@ -253,7 +256,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-shopping-bag"></i>              
               <p>
                 Produit
                 <i class="fas fa-angle-left right"></i>
