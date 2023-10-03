@@ -4,6 +4,7 @@ use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -48,6 +49,20 @@ Route::put('/products/{product}', [ProductController::class, 'update'])->name('p
 
 Route::delete('/products/{product}', [ProductController::class, 'delete'])->name('products.delete');
 
+
+
+
+
+Route::get('/carts',[CartController::class,"index"])->name('Cart.indexlist');
+
+Route::get('/carts/create',[CartController::class,"create"])->name('Cart.create');
+Route::post('/carts',[CartController::class,"store"])->name('Cart.store');
+
+Route::get('/carts/edit',[CartController::class,"edit"])->name('Cart.edit');
+Route::put('/carts/{cart}/edit',[CartController::class,"update"])->name('Cart.update');
+
+
+Route::delete('/carts/{cart}',[CartController::class,'destroy'])->name('cart.delete');
 
 // Route configuration for Event entity
 Route::resource('events', EventController::class);
