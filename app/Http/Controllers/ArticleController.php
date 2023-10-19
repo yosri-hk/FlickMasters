@@ -10,7 +10,7 @@ use App\Models\Article;
 class ArticleController extends Controller
 {
     public function liste_articles() {
-        $articles=Article::all();
+        $articles = Article::paginate(2);
         return view("articles.liste",['articles' => $articles]);
     }
 
@@ -21,11 +21,21 @@ class ArticleController extends Controller
 
     public function ajouterArticleTraitement(Request $request) {
         $data=$request->validate([
-            "titre"=>"required",
-            "contenu"=>"required",
-            "datePublication"=>"required",
-            "auteur"=>"required"
+            "titre"=>"required|string|between:5,20|unique:articles",
+            "contenu"=>"required|string|between:5,100",
+            "datePublication"=>"required|date|after:today",
+            "auteur"=>"required|alpha",
+            "image"=>"required"
         ]);
+
+        if ($request->hasFile('image')) {
+            $storedImagePath = $request->file('image')->store('images', 'public');
+        
+            $filename = pathinfo($storedImagePath, PATHINFO_BASENAME);
+        
+        
+            $data['image'] = $filename;
+        }
         
         $article=Article::create($data);
 
@@ -42,12 +52,23 @@ class ArticleController extends Controller
     {
         $data=$request -> validate(
             [
-            "titre"=>"required",
-            "contenu"=>"required",
-            "datePublication"=>"required",
-            "auteur"=>"required"
+            "titre"=>"required|string|between:5,20|unique:articles",
+            "contenu"=>"required|string|between:5,100",
+            "datePublication"=>"required|date|after:today",
+            "auteur"=>"required|alpha",
+            "image"=>"required"
             ]
             );
+
+            if ($request->hasFile('image')) {
+                $storedImagePath = $request->file('image')->store('images', 'public');
+            
+                $filename = pathinfo($storedImagePath, PATHINFO_BASENAME);
+            
+            
+                $data['image'] = $filename;
+            }    
+
         $article->update($data);
         
         return redirect(route('article.liste'))->with('success',"Article modifie  avec succes");

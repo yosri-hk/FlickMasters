@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $fillable=[
-        "titre","contenu","datePublication","auteur"
+        "titre","contenu","datePublication","auteur","image"
     ];
 }
