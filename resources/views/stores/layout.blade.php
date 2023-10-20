@@ -1,3 +1,6 @@
+<!-- resources/views/layouts/app.blade.php -->
+ 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +17,6 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-
-<!-- bootstrap mta3i -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<!-- bootstrap mta3i -->  
-  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
 
 
 
@@ -194,10 +192,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/img08.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
+          <a href="/admin" class="d-block">Yosri Haj Khlifa</a>
         </div>
       </div>
 
@@ -242,7 +240,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="articles" class="nav-link">
+                <a href="/articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -274,6 +272,29 @@
                 <a href="/pages/UI/icons.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Ordre
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/orders/create" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Ordre</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/orders" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List Ordre</p>
                 </a>
               </li>
             </ul>
@@ -337,9 +358,7 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
+          
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -347,81 +366,9 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-            <!-- ajouter article -->
-            <div id="ajouterContent">
-            <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <h1 class="text-center"> Modifier un Utilisateur</h1>
-                <hr>
-
-                @if (session("status"))
-                <div class="alert alert-success">
-                  {{session("status")}}
-                </div>
-                @endif
-            <div>
-            @if($errors->any())
-            <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-            </ul>
-            @endif
-            </div>
-
-            <form method="POST" action="{{ route('users.update', ['user' => $user->id]) }}">
-                        @csrf
-                        @method('PUT')
-
-                        <div class="form-group">
-                            <label for="name">Nom de l'Utilisateur</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email"></label>
-                            <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="birthdate">Birthdate</label>
-                            <input type="date" class="form-control" id="birthdate" name="birthdate" value="{{ old('birthdate', $user->birthdate) }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $user->phone) }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" value="{{ old('password', $user->password) }}" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Modifier</button>
-                    </form>
-            </div>
+        <div class="container">
+            @yield('content')
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-            </div>
-            <!-- ajouter article -->
-        </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>

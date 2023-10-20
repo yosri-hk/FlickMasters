@@ -384,7 +384,7 @@
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-md-9">
-                    <h1 class="text-center">Liste d'événement</h1>
+                    <h1 class="text-center">Liste d'utilisateurs</h1>
                     <hr>
                     <div class="d-flex justify-content-center">
                       <a href="{{ route('users.create') }}" class="btn btn-info">Ajouter un utilisateur</a>
