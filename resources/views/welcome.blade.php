@@ -194,7 +194,7 @@
 								<li class="smooth-menu">
 									<a href="#home">Home</a>
 								</li>
-								<li class="smooth-menu"><a href="#about">About</a></li>
+								<li class="smooth-menu"><a href="#about">Articles</a></li>
 								<li class="smooth-menu"><a href="#service">Service</a></li>
 								<li class="smooth-menu"><a href="#project">Project</a></li>
 								<li class="smooth-menu"><a href="#team">Team</a></li>
@@ -389,34 +389,7 @@
 
 		<!--about-us start -->
 		<section id="about" class="about-us">
-			<div class="container">
-				<div class="about-us-content">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="single-about-us">
-								<div class="about-us-txt">
-									<h2>about us</h2>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
-									</p>
-									<div class="project-btn">
-										<a href="#"  class="project-view">learn more
-										</a>
-									</div><!--/.project-btn-->
-								</div><!--/.about-us-txt-->
-							</div><!--/.single-about-us-->
-						</div><!--/.col-->
-						<div class="col-sm-6">
-							<div class="single-about-us">
-								<div class="about-us-img">
-									<img src="/assets/images/about/about-part.jpg" alt="about images">
-								</div><!--/.about-us-img-->
-							</div><!--/.single-about-us-->
-						</div><!--/.col-->
-					</div><!--/.row-->
-				</div><!--/.about-us-content-->
-			</div><!--/.container-->
-
+			@yield('content')
 		</section><!--/.about-us-->
 		<!--about-us end -->
 

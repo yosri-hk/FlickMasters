@@ -15,6 +15,12 @@ class ArticleController extends Controller
     }
 
 
+    public function index() {
+        $articles = Article::paginate(2);
+        return view("articles.index",['articles' => $articles]);
+    }
+
+
     public function ajouterArticle() {
         return view("articles.ajouter");
     }

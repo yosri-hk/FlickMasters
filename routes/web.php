@@ -14,9 +14,7 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[ArticleController::class,"index"])->name('index');
 
 Route::get('/admin', function () {
     return view('Admin');
