@@ -34,6 +34,7 @@
                 <td>{{ $order->order_date }}</td>
                 <td>{{ $order->delivery_address }}</td>
                 <td>{{ $order->total_price }}</td>
+                
                 <td>
                   <div class="btn-group">
                     <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info">View</a>

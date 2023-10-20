@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('total_price', 10, 2);
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('product_id');
+           
             $table->integer('quantity');
            
             $table->timestamps();
