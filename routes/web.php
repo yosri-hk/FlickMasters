@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\PromotionController;
+
 
 
 /*
@@ -60,6 +63,22 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.e
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 
 Route::delete('/users/{user}',[UserController::class,'destroy'])->name('users.delete');
+//
+// Store routes
+Route::get('/stores', [StoreController::class, 'index'])->name('stores.index');
+Route::get('/stores/create', [StoreController::class, 'create'])->name('stores.create');
+Route::post('/stores', [StoreController::class, 'store'])->name('stores.store');
+Route::get('/stores/{store}/edit', [StoreController::class, 'edit'])->name('stores.edit');
+Route::put('/stores/{store}', [StoreController::class, 'update'])->name('stores.update');
+
+Route::delete('/stores/{store}',[StoreController::class,'destroy'])->name('stores.destroy');
+Route::get('/stores/{store}/attach-detach', [StoreController::class, 'attachAndDetachPromotion'])->name('stores.attachanddetach');
+Route::post('stores/{store}/attach-promotion', [StoreController::class, 'attachPromotion'])->name('stores.attach-promotion');
+Route::delete('stores/{store}/detach-promotion/{promotion}', [StoreController::class, 'detachPromotion'])->name('stores.detach-promotion');
+Route::get('stores/{store}/promotions', [StoreController::class,'listPromotion'])->name('stores.promotions');
+
+// Coupon routes
+Route::resource('promotions', PromotionController::class);
 
 // Route configuration for Event entity
 Route::resource('events', EventController::class);
