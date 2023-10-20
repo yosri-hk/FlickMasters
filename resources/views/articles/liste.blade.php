@@ -255,7 +255,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-shopping-bag"></i>              
               <p>
                 Produit
                 <i class="fas fa-angle-left right"></i>
@@ -263,13 +263,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/pages/UI/general.html" class="nav-link">
+              <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Produit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/pages/UI/icons.html" class="nav-link">
+              <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -400,7 +400,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
+    <!-- <script>
         const articleMore = document.getElementById("article-more");
         const readMoreLink = document.getElementById("read-more-link");
 
@@ -414,7 +414,7 @@
                 readMoreLink.textContent = "Voir plus";
             }
         });
-    </script>
+    </script> -->
         <!-- liste article -->
         </div>
         <!-- /.row -->

@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('titre');
+            $table->string('titre')->unique();
             $table->text('contenu');
             $table->date('datePublication');
             $table->string('auteur');
