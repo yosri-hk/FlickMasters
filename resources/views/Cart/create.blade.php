@@ -412,18 +412,20 @@
         <option value="">Select an address</option>
         <?php
         // Récupérer toutes les adresses depuis la base de données
-        //$addresses = App\Models\Adresse::all();
-        $adresss = App\Models\Adresse::all();
+        $addresses = App\Models\Adresse::all();
         
         // Itérer à travers les adresses
-        foreach ($adresss as $addre) {
+        foreach ($addresses as $address) {
+            // Concaténer les attributs pour former l'adresse
+            $fullAddress = $address->Deliveryaddresse . ', ' . $address->City . ', ' . $address->Postal_code;
             ?>
-            <option value="<?php echo $addre->id; ?>"><?php echo $addre->Deliveryaddresse; ?></option>
+            <option value="<?php echo $address->id; ?>"><?php echo $fullAddress; ?></option>
             <?php
         }
         ?>
     </select>
 </div>
+
 
     <div class="mb-3">
         <label for="discounts" class="form-label">Discounts</label>
