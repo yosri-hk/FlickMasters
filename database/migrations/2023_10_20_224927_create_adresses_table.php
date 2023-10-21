@@ -12,16 +12,13 @@ return new class extends Migration
 */
 public function up(): void
 {
-Schema::create('carts', function (Blueprint $table) {
+Schema::create('adresses', function (Blueprint $table) {
 $table->id();
-$table->unsignedBigInteger('user_id');
-$table->text('items');
-$table->decimal('discounts', 8, 2);
-$table->string('delivery_address');
-$table->decimal('subtotal', 8, 2);
-$table->string('payment_method');
+$table->string('Deliveryaddresse');
+$table->string('City');
+$table->decimal('Postal_code');
 $table->timestamps();
-
+$table->foreign('cart_id')->references('id')->on('carts');
 });
 }
 
@@ -30,6 +27,6 @@ $table->timestamps();
 */
 public function down(): void
 {
-Schema::dropIfExists('carts');
+Schema::dropIfExists('adresses');
 }
 };

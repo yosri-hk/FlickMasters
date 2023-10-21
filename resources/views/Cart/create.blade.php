@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FlickMasters</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -14,11 +14,10 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-
 <!-- bootstrap mta3i -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<!-- bootstrap mta3i -->  
-  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
 
 
 
@@ -189,17 +188,7 @@
       <span class="brand-text font-weight-light">FlickMasters</span>
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
-        </div>
-      </div>
+   
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -257,68 +246,50 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-shopping-bag"></i>              
               <p>
                 Produit
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/pages/UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Produit</p>
+            <li class="nav-item">
+                <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ajouter Produit</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Liste</p>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Afficher Liste</p>
                 </a>
-              </li>
-            </ul>
+            </li>
+        </ul>
           </li>
-
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Cart
+              Cart
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/pages/UI/general.html" class="nav-link">
+                <a href="/pages/forms/general.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Cart</p>
+                  <p>Ajouter Cart </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/pages/UI/icons.html" class="nav-link">
+                <a href="/pages/forms/advanced.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Carts</p>
                 </a>
               </li>
             </ul>
           </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -396,7 +367,7 @@
             <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <h1 class="text-center">Formulaire d'Ajout de paniers</h1>
+                <h1 class="text-center">Add to cart</h1>
                 <hr>
                 @if (session("status"))
                 <div class="alert alert-success">
@@ -406,45 +377,89 @@
 
 
                 <div>
-        <!-- @if($errors->any())
+        @if($errors->any())
         <ul>
             @foreach($errors->all() as $error)
             <li>{{$error}}</li>
             @endforeach
                </ul>
                @endif
-               </div> -->
+               </div>
+<form action="{{ isset($cart) ? route('Cart.create', $cart->id) : route('Cart.store') }}" method="POST">
+    @csrf
+    @if(isset($cart))
+        @method('PUT') <!-- For editing an existing product -->
+    @endif
+    <div class="mb-3">
+        <label for="user_id" class="form-label">User_id</label>
+        <input type="text" class="form-control" id="user_id" name="user_id" required value="{{ isset($cart) ? $cart->user_id : '' }}">
+    </div>
+    <div class="mb-3">
+    <label for="items" class="form-label">Items</label>
+    <?php
+    // Récupérer les éléments du texte (supposons que les éléments sont séparés par des virgules)
+    $items = isset($cart) ? explode('mm', $cart->items) : [1,2,3,4,5];
+    ?>
+    <select class="form-select" id="items" name="items">
+        <?php foreach ($items as $item): ?>
+            <option value="<?php echo trim($item); ?>"><?php echo trim($item); ?></option>
+        <?php endforeach; ?>
+    </select>
+</div> 
+<div class="mb-3">
+    <label for="Delivery_address" class="form-label">Delivery Address</label>
+    <select class="form-select" id="Delivery_address" name="Delivery_address">
+        <option value="">Select an address</option>
+        <?php
+        // Récupérer toutes les adresses depuis la base de données
+        //$addresses = App\Models\Adresse::all();
+        $adresss = App\Models\Adresse::all();
+        
+        // Itérer à travers les adresses
+        foreach ($adresss as $addre) {
+            ?>
+            <option value="<?php echo $addre->id; ?>"><?php echo $addre->Deliveryaddresse; ?></option>
+            <?php
+        }
+        ?>
+    </select>
+</div>
 
-                <form action="{{route('Cart.store')}}" method="POST">
-                  @csrf
-                    <div class="mb-3">
-                        <label for="user_id" class="form-label">Id User</label>
-                        <input type="text" class="form-control" id="user_id" name="user_id" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="items" class="form-label">Items</label>
-                        <textarea class="form-control" id="items" name="items" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="discounts" class="form-label">Discounts</label>
-                        <input type="text" class="form-control" id="discounts" name="discounts" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="delivery_address " class="form-label">Delivery Address</label>
-                        <input type="text" class="form-control" id="delivery_address" name="delivery_address" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="subtotal" class="form-label">subtotales</label>
-                        <input type="text" class="form-control" id="subtotal" name="subtotal" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="payment_method" class="form-label">Payment Method</label>
-                        <input type="text" class="form-control" id="payment_method" name="payment_method" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="margin-right:20px">Ajouter</button>
-                    <a class="btn btn-warning" href="/carts">Revenir à la liste des paniers</a>
-                </form>
-            </div>
+    <div class="mb-3">
+        <label for="discounts" class="form-label">Discounts</label>
+        <input type="number" class="form-control" id="discounts" name="discounts" required min="0" step="0.01" value="{{ isset($cart) ? $cart->discounts : '' }}">
+    </div>
+   
+   
+    <div class="mb-3">
+        <label for="subtotal" class="form-label">Subtotal</label>
+        <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ isset($cart) ? $cart->subtotal : '' }}">
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Payment Method</label>
+
+    <?php
+    // Récupérer la valeur actuelle de payment_method
+    $currentPaymentMethod = isset($cart) ? $cart->payment_method : '';
+
+    // Définir les options possibles pour le bouton radio
+    $paymentMethods = ['credit_card', 'paypal', 'bank_transfer'];
+    ?>
+
+    <?php foreach ($paymentMethods as $method): ?>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment_method" id="payment_method_<?= $method ?>" value="<?= $method ?>" <?= ($currentPaymentMethod === $method) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="payment_method_<?= $method ?>">
+                <?= ucfirst(str_replace('_', ' ', $method)) ?>
+            </label>
+        </div>
+    <?php endforeach; ?>
+</div>
+    <button type="submit" class="btn btn-primary">{{ isset($cart) ? 'Update' : 'Add' }} Cart</button>
+    <a class="btn btn-warning" href="/carts">Revenir à la liste des paniers</a>
+</form>
+
+</div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

@@ -11,9 +11,15 @@ use HasFactory;
 protected $fillable = [
 'user_id',
 'items',
+'Delivery_address',
 'discounts',
-'delivery_address',
+
 'subtotal',
 'payment_method',
 ];
+public function adresses()
+{
+    return $this->hasMany(Adresse::class);
+}
+
 }
