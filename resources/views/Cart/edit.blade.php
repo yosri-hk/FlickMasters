@@ -189,19 +189,8 @@
       <span class="brand-text font-weight-light">FlickMasters</span>
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
-        </div>
-      </div>
-
-      <!-- SidebarSearch Form -->
+   
+   <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -269,11 +258,48 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Produit</p>
                 </a>
+                <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ajouter Produit</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Afficher Liste</p>
+                </a>
+            </li>
+        </ul>
               </li>
               <li class="nav-item">
                 <a href="/pages/UI/icons.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+              Cart
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/pages/forms/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Cart </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/forms/advanced.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Carts</p>
                 </a>
               </li>
             </ul>
@@ -345,70 +371,94 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-            <!-- ajouter article -->
-            <div id="ajouterContent">
+<section class="content">
+    <div class="container-fluid">
+        <!-- Edit product -->
+        <div id="editProductContent">
             <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <h1 class="text-center">Modifier un panier</h1>
-                <hr>
+                <div class="row justify-content-center">
+                    <div class="col-md-9">
+                        <h1 class="text-center">Update Cart</h1>
+                        <hr>
 
-                @if (session("status"))
-                <div class="alert alert-success">
-                  {{session("status")}}
-                </div>
-                @endif
+                        @if (session("status"))
+                            <div class="alert alert-success">
+                                {{ session("status") }}
+                            </div>
+                        @endif
 
+                        <div>
+                            @if($errors->any())
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                        <form action="{{ route('Cart.update', ['cart' => $cart]) }}" method="POST">
+    @csrf
+    @method('PUT') <!-- Use the appropriate HTTP method (PUT) for updating -->
 
-            <div>
-            @if($errors->any())
-            <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
+    <div class="mb-3">
+        <label for="user_id" class="form-label">User_id</label>
+        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ $cart->user_id }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="items" class="form-label">Items</label>
+        @php
+            // Récupérer les éléments du texte (supposons que les éléments sont séparés par des virgules)
+            $items = isset($cart) ? explode('mm', $cart->items) : [1,2,3,4,5];
+        @endphp
+        <select class="form-select" id="items" name="items">
+            @foreach ($items as $item)
+            <option value="<?php echo trim($item); ?>"><?php echo trim($item); ?></option>
             @endforeach
-            </ul>
-            @endif
-            </div>
+        </select>
+    </div>
+   
+                            <div class="mb-3">
+                                <label for="discounts" class="form-label">Discounts</label>
+                                <input type="number" class="form-control" id="discounts" name="discounts" value="{{ $cart->discounts }}" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="subtotal" class="form-label">Subtotal</label>
+                                <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ $cart->subtotal }}">
+                            </div>
+                            <div class="mb-3">
+    <label for="payment_method" class="form-label">Payment Method</label>
 
-                <form action="{{route('Cart.edit',['cart'=>$cart])}}" method="POST">
-               
-                  @csrf
-                    <div class="mb-3">
-                        <label for="user_id" class="form-label">Id User</label>
-                        <input type="text" class="form-control" id="user_id" name="user_id" required>
+ 
+    <?php
+    // Récupérer la valeur actuelle de payment_method
+    $currentPaymentMethod = isset($cart) ? $cart->payment_method : '';
+
+    // Définir les options possibles pour le bouton radio
+    $paymentMethods = ['credit_card', 'paypal', 'bank_transfer'];
+    ?>
+
+    <?php foreach ($paymentMethods as $method): ?>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment_method" id="payment_method_<?= $method ?>" value="<?= $method ?>" <?= ($currentPaymentMethod === $method) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="payment_method_<?= $method ?>">
+                <?= ucfirst(str_replace('_', ' ', $method)) ?>
+            </label>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+                            <button type="submit" class="btn btn-primary" style="margin-right: 20px">Update</button>
+                            <a class="btn btn-warning" href="/carts">Revenir à la liste des paniers</a>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="items" class="form-label">Items</label>
-                        <textarea class="form-control" id="items" name="items" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="discounts" class="form-label">Discounts</label>
-                        <input type="text" class="form-control" id="discounts" name="discounts" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="delivery_address " class="form-label">Delivery Address</label>
-                        <input type="text" class="form-control" id="delivery_address" name="delivery_address" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="subtotal" class="form-label">subtotales</label>
-                        <input type="text" class="form-control" id="subtotal" name="subtotal" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="payment_method" class="form-label">Payment Method</label>
-                        <input type="text" class="form-control" id="payment_method" name="payment_method" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="margin-right:20px">Modifier</button>
-                    <a class="btn btn-warning" href="/carts">Revenir à la liste des paniers</a>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
             </div>
             <!-- ajouter article -->
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdressetController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
@@ -90,11 +91,34 @@ Route::get('/carts',[CartController::class,"index"])->name('Cart.indexlist');
 Route::get('/carts/create',[CartController::class,"create"])->name('Cart.create');
 Route::post('/carts',[CartController::class,"store"])->name('Cart.store');
 
-Route::get('/carts/edit',[CartController::class,"edit"])->name('Cart.edit');
-Route::put('/carts/{cart}/edit',[CartController::class,"update"])->name('Cart.update');
+Route::get('/carts/{cart}/edit',[CartController::class,"edit"])->name('Cart.edit');
+Route::put('/carts/{cart}',[CartController::class,"update"])->name('Cart.update');
 
 
 Route::delete('/carts/{cart}',[CartController::class,'destroy'])->name('cart.delete');
+////////////////////////////
 
+
+
+
+
+
+
+
+Route::get('/adresss',[AdressetController::class,"index"])->name('Address.indexlist');
+
+Route::get('/adresss/create',[AdressetController::class,"create"])->name('Address.create');
+Route::post('/adresss',[AdressetController::class,"store"])->name('Address.store');
+
+Route::get('/adresss/{adresse}/edit',[AdressetController::class,"edit"])->name('Address.edit');
+Route::put('/adresss/{adresse}',[AdressetController::class,"update"])->name('Address.update');
+
+
+Route::delete('/adresss/{adresse}',[AdressetController::class,'destroy'])->name('adresse.delete');
 // Route configuration for Event entity
+
+
+
+
+
 Route::resource('events', EventController::class);

@@ -381,10 +381,10 @@
         <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <h1 class="text-center">Liste des paniers</h1>
+                <h1 class="text-center">Liste des adresse</h1>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <a href="/carts/create" class="btn btn-info">Ajouter un panier</a>
+                    <a href="/adresss/create" class="btn btn-info">Ajouter une adresse</a>
                 </div>
                 <hr>
                 @if (session("status"))
@@ -395,35 +395,28 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="text-center">UserId</th>
-                            <th class="text-center"> items</th>
-                            <th class="text-center">Delivery_address</th>
-                            <th class="text-center">Discounts</th>
-                         
-                            <th class="text-center">subtotals</th>
-                            <th class="text-center">payment-method</th>
+                            <th class="text-center">Deliveryaddresse</th>
+                            <th class="text-center"> City</th>
+                            <th class="text-center">Postal_code</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($carts as $cart)
+                    @foreach($adresss as $adresse)
                         <tr class="article-row">
-                            <td class="text-center">{{$cart->user_id}}</td>
-                            <td class="text-center">
-                                {{$cart->items}}
-                            </td>
-                            <td class="text-center">{{$cart->Delivery_address}}</td>
-                            <td class="text-center">{{$cart->discounts}}</td>
-                      
-                            <td class="text-center">{{$cart->subtotal}}</td>
-                            <td class="text-center">{{$cart->payment_method}}</td>
+                            <td class="text-center">{{$adresse->Deliveryaddresse}}</td>
+                
+                            <td class="text-center">{{$adresse->City}}</td>
+                            <td class="text-center">{{$adresse->Postal_code}}</td>
+                          
                             <td class="text-center">
                             <div class="btn-group">
                    
-                    <a href="{{ route('Cart.edit', $cart->id) }}" class="btn btn-primary">Edit</a>
-                    <form method="POST" action="{{ route('cart.delete', $cart->id) }}" style="display: inline;">
-@csrf
+                    <a href="{{ route('Address.edit', $adresse->id) }}" class="btn btn-primary">Edit</a>
+                    <form method="POST" action="{{ route('adresse.delete', $adresse->id) }}" style="display: inline;">
+                    @csrf
                       @method('DELETE')
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this order?')">Delete</button>
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this adresse?')">Delete</button>
                     </form>
                   </div>
                             </td>
