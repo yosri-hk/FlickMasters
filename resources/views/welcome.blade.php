@@ -80,11 +80,6 @@
 					<ul class="pull-left">
 						<li>
 							<a href="#">
-								<i class="fa fa-phone" aria-hidden="true"></i> +992 563 542
-							</a>
-						</li><!--/li-->
-						<li>
-							<a href="#">
 								<i class="fa fa-envelope" aria-hidden="true"></i>info@mail.com
 							</a>
 						</li><!--/li-->

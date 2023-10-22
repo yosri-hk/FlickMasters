@@ -12,7 +12,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\ParticipationController;
-
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ Route::delete('/deleteArticle/{article}/delete',[ArticleController::class,'delet
 
 //Products 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::resource('orders',OrderController::class );
+
 
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
@@ -73,12 +73,17 @@ Route::get('/stores/create', [StoreController::class, 'create'])->name('stores.c
 Route::post('/stores', [StoreController::class, 'store'])->name('stores.store');
 Route::get('/stores/{store}/edit', [StoreController::class, 'edit'])->name('stores.edit');
 Route::put('/stores/{store}', [StoreController::class, 'update'])->name('stores.update');
+Route::get('/stores/show', [StoreController::class, 'show'])->name('stores.show');
 
 Route::delete('/stores/{store}',[StoreController::class,'destroy'])->name('stores.destroy');
 Route::get('/stores/{store}/attach-detach', [StoreController::class, 'attachAndDetachPromotion'])->name('stores.attachanddetach');
 Route::post('stores/{store}/attach-promotion', [StoreController::class, 'attachPromotion'])->name('stores.attach-promotion');
 Route::delete('stores/{store}/detach-promotion/{promotion}', [StoreController::class, 'detachPromotion'])->name('stores.detach-promotion');
 Route::get('stores/{store}/promotions', [StoreController::class,'listPromotion'])->name('stores.promotions');
+
+Route::get('/stores/{store}/products/create', [StoreController::class, 'addproduct'])->name('stores.addproduct');
+Route::post('/stores/{store}/products', [StoreController::class, 'addProducttoStore'])->name('stores.addProducttoStore');
+Route::get('stores/{store}/products', [StoreController::class,'listProducts'])->name('stores.products');
 
 // Coupon routes
 Route::resource('promotions', PromotionController::class);
@@ -120,6 +125,11 @@ Route::delete('/adresss/{adresse}',[AdressetController::class,'destroy'])->name(
 // Route configuration for Event entity
 Route::resource('events', EventController::class);
 
+//route order
+Route::resource('orders',OrderController::class );
+
+//route coupon
+Route::resource('coupons', CouponController::class);
 // Route configuration for Stand entity
 Route::resource('stands', StandController::class);
 

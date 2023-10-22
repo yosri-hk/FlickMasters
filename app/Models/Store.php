@@ -18,4 +18,8 @@ class Store extends Model
     return $this->belongsToMany(Promotion::class);
 }
 
+public function products()
+{
+    return $this->belongsToMany(Product::class);
+}
 }

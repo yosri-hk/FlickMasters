@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $table = 'products';
+    //protected $table = 'products';
 
+    
     protected $fillable = [
         "name",
         "description",
@@ -15,7 +16,15 @@ class Product extends Model
         "quantity",
         "weight",
         "image_url",
+        "store_id",
     ];
 
-
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'product_id');
+    }  
+      public function stores()
+    {
+        return $this->belongsToMany(Store::class);
+    }
 }
