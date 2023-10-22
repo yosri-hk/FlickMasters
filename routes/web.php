@@ -11,7 +11,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\StandController;
+use App\Http\Controllers\ParticipationController;
 use App\Http\Controllers\CouponController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -118,12 +120,9 @@ Route::put('/adresss/{adresse}',[AdressetController::class,"update"])->name('Add
 
 
 Route::delete('/adresss/{adresse}',[AdressetController::class,'destroy'])->name('adresse.delete');
+
+
 // Route configuration for Event entity
-
-
-
-
-
 Route::resource('events', EventController::class);
 
 //route order
@@ -133,3 +132,7 @@ Route::resource('orders',OrderController::class );
 Route::resource('coupons', CouponController::class);
 // Route configuration for Stand entity
 Route::resource('stands', StandController::class);
+
+// Route configuration for Stand entity
+Route::resource('participations', ParticipationController::class);
+

@@ -68,6 +68,9 @@
           <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('stands.index') }}" class="nav-link"> Stands </a>
+      </li>
         </ul>
 
         <!-- Right navbar links -->

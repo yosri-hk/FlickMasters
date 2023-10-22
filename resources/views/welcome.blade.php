@@ -193,8 +193,8 @@
 								<li class="smooth-menu"><a href="#service">Service</a></li>
 								<li class="smooth-menu"><a href="#project">Project</a></li>
 								<li class="smooth-menu"><a href="#team">Event</a></li>
-								<li class="smooth-menu"><a href="#team">Stand</a></li>
 								<li class="smooth-menu"><a href="#blog">Blog</a></li>
+								<li ><a  href="{{ route('participations.create') }}">Participer</a></li>
 								<li class="smooth-menu"><a href="#contact">Contact</a></li>
 								<li>
 									<a href="#">
