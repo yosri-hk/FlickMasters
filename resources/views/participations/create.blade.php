@@ -178,6 +178,7 @@
 												<div class="col-sm-12">
 													<div class="single-contact-btn pull-right">
 														<button class="contact-btn" type="submit">Participer</button>
+														<button class="contact-btn" type="button" onclick="window.location.href='/'">back to home</button>
 													</div><!--/.single-single-contact-btn-->
 												</div><!--/.col-->
 											</div><!--/.row-->
