@@ -129,7 +129,7 @@
 			<div class="container">
 				<div class="contact-details">
 					<div class="section-header contact-head  text-center" style="margin-right: 450px;">
-						<h2>Ajouter votre participation</h2>
+						<h2>Ajouter vos participation</h2>
 					</div><!--/.section-header-->
 					<div class="contact-content" style="margin-left: 150px;">
 						<div class="row">
