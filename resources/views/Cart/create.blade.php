@@ -394,18 +394,24 @@
         <label for="user_id" class="form-label">User_id</label>
         <input type="text" class="form-control" id="user_id" name="user_id" required value="{{ isset($cart) ? $cart->user_id : '' }}">
     </div>
-    <div class="mb-3">
-    <label for="items" class="form-label">Items</label>
     <?php
-    // Récupérer les éléments du texte (supposons que les éléments sont séparés par des virgules)
-    $items = isset($cart) ? explode('mm', $cart->items) : [1,2,3,4,5];
-    ?>
-    <select class="form-select" id="items" name="items">
-        <?php foreach ($items as $item): ?>
-            <option value="<?php echo trim($item); ?>"><?php echo trim($item); ?></option>
+// Exemple de récupération des commandes depuis une source de données
+$allOrders = App\Models\Order::all();
+?>
+
+<div class="mb-3">
+    <label for="orders" class="form-label">Orders</label>
+    <select class="form-select" id="orders" name="orders[]" multiple>
+        <?php foreach ($allOrders as $order): ?>
+            <option value="<?php echo $order->id; ?>">
+                Order ID: <?php echo $order->id; ?>
+            </option>
         <?php endforeach; ?>
     </select>
-</div> 
+</div>
+
+
+
 <div class="mb-3">
     <label for="Delivery_address" class="form-label">Delivery Address</label>
     <select class="form-select" id="Delivery_address" name="Delivery_address">
@@ -427,16 +433,21 @@
 </div>
 
 
-    <div class="mb-3">
-        <label for="discounts" class="form-label">Discounts</label>
-        <input type="number" class="form-control" id="discounts" name="discounts" required min="0" step="0.01" value="{{ isset($cart) ? $cart->discounts : '' }}">
-    </div>
    
-   
-    <div class="mb-3">
-        <label for="subtotal" class="form-label">Subtotal</label>
-        <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ isset($cart) ? $cart->subtotal : '' }}">
-    </div>
+<div class="mb-3">
+    <label for="subtotal" class="form-label">Subtotal</label>
+    <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ isset($cart) ? $cart->calculateSubtotalForOrders() : 567}}" hidden>
+</div>
+
+
+
+
+
+
+
+
+
+
     <div class="mb-3">
     <label class="form-label">Payment Method</label>
 

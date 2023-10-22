@@ -10,7 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PromotionController;
-
+use App\Http\Controllers\FrontCartController;
 
 
 
@@ -26,8 +26,13 @@ use App\Http\Controllers\PromotionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+//   Route::get('/Cart', function index () {
+//       return view('Cart.Cartt');
+//  });
+
+Route::get('/Cart',[CartController::class,"index"])->name('Cartt');
 
 Route::get('/admin', function () {
     return view('Admin');

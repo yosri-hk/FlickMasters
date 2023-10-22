@@ -396,9 +396,8 @@
                     <thead>
                         <tr>
                             <th class="text-center">UserId</th>
-                            <th class="text-center"> items</th>
-                            <th class="text-center">Delivery_address</th>
-                            <th class="text-center">Discounts</th>
+                            <th class="text-center"> orders</th>
+                            <th class="text-center"> Delivery_address</th>
                          
                             <th class="text-center">subtotals</th>
                             <th class="text-center">payment-method</th>
@@ -409,10 +408,11 @@
                         <tr class="article-row">
                             <td class="text-center">{{$cart->user_id}}</td>
                             <td class="text-center">
-                                {{$cart->items}}
-                            </td>
+                    <!-- Format the 'orders' column as JSON -->
+                    <pre>{{ json_encode($cart->orders, JSON_PRETTY_PRINT) }}</pre>
+                </td>
                             <td class="text-center">{{$cart->Delivery_address}}</td>
-                            <td class="text-center">{{$cart->discounts}}</td>
+                        
                       
                             <td class="text-center">{{$cart->subtotal}}</td>
                             <td class="text-center">{{$cart->payment_method}}</td>

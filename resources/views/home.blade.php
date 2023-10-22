@@ -192,7 +192,7 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
 								<li class="smooth-menu">
-									<a href="#home">Home</a>
+									<a href="/">Home</a>
 								</li>
 								<li class="smooth-menu"><a href="#about">About</a></li>
 								<li class="smooth-menu"><a href="#service">Service</a></li>
@@ -201,7 +201,7 @@
 								<li class="smooth-menu"><a href="#blog">Blog</a></li>
 								<li class="smooth-menu"><a href="#contact">Contact</a></li>
 								<li>
-									<a href="#">
+									<a href="/Cart">
 										<span class="lnr lnr-cart"></span>
 									</a>
 								</li>

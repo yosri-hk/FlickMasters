@@ -16,4 +16,8 @@ class Order extends Model
         'delivery_address',
         'total_price',
     ];
+    public function cart()
+{
+    return $this->belongsTo(Cart::class);
+}
 }

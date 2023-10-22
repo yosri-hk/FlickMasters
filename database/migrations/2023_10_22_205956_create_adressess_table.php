@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -12,16 +11,15 @@ return new class extends Migration
 */
 public function up(): void
 {
-Schema::create('carts', function (Blueprint $table) {
+Schema::create('adresses', function (Blueprint $table) {
 $table->id();
-$table->unsignedBigInteger('user_id');
-$table->text('items');
-$table->text('Delivery_address');
-$table->decimal('discounts', 8, 2);
-$table->decimal('subtotal', 8, 2);
-$table->string('payment_method');
-$table->timestamps();
+$table->string('Deliveryaddresse');
+$table->string('City');
+$table->string('Postal_code');
+$table->unsignedBigInteger('cart_id')->nullable();
 
+$table->timestamps();
+$table->foreign('cart_id')->references('id')->on('carts');
 });
 }
 
@@ -30,6 +28,6 @@ $table->timestamps();
 */
 public function down(): void
 {
-Schema::dropIfExists('carts');
+Schema::dropIfExists('adresses');
 }
 };
