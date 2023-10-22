@@ -15,11 +15,11 @@
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
 
-  <link href="{{ asset('ArticleCss/article.css') }}" rel="stylesheet">
 <!-- bootstrap mta3i -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- bootstrap mta3i  -->
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- bootstrap mta3i -->  
+  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('StandCss/Create.css') }}">
 
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
@@ -53,6 +53,9 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/articles" class="nav-link">Article</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('stands.index') }}" class="nav-link"> Stands </a>
       </li>
     </ul>
 
@@ -192,10 +195,8 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
         </div>
       </div>
 
@@ -240,7 +241,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -249,35 +250,6 @@
                 <a href="/articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Modifier Article</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-               Cart
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/ajouterArticle" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Cart</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/articles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Cart</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/articles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modifier Cart</p>
                 </a>
               </li>
             </ul>
@@ -338,13 +310,36 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/pages/tables/simple.html" class="nav-link">
+                <a href="{{ route('events.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Evenement</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/pages/tables/data.html" class="nav-link">
+                <a href="{{ route('events.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Liste</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+              Stand
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('stands.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Stand</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('stands.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -377,81 +372,63 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-        <!-- liste article -->
-        <div class="container">
+            <!-- ajouter article -->
+            <div id="ajouterContent">
+            <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-9">
-                <h1 class="text-center">Liste des paniers</h1>
-                <hr>
-                <div class="d-flex justify-content-center">
-                    <a href="/carts/create" class="btn btn-info">Ajouter un panier</a>
-                </div>
-                <hr>
-                @if (session("status"))
-                <div class="alert alert-success">
-                  {{session("status")}}
-                </div>
-                @endif
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="text-center">UserId</th>
-                            <th class="text-center"> items</th>
-                            <th class="text-center">Delivery_address</th>
-                            <th class="text-center">Discounts</th>
-                         
-                            <th class="text-center">subtotals</th>
-                            <th class="text-center">payment-method</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($carts as $cart)
-                        <tr class="article-row">
-                            <td class="text-center">{{$cart->user_id}}</td>
-                            <td class="text-center">
-                                {{$cart->items}}
-                            </td>
-                            <td class="text-center">{{$cart->Delivery_address}}</td>
-                            <td class="text-center">{{$cart->discounts}}</td>
-                      
-                            <td class="text-center">{{$cart->subtotal}}</td>
-                            <td class="text-center">{{$cart->payment_method}}</td>
-                            <td class="text-center">
-                            <div class="btn-group">
-                   
-                    <a href="{{ route('Cart.edit', $cart->id) }}" class="btn btn-primary">Edit</a>
-                    <form method="POST" action="{{ route('cart.delete', $cart->id) }}" style="display: inline;">
-@csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this order?')">Delete</button>
-                    </form>
-                  </div>
-                            </td>
-                            
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+        <h1>Création de Stand</h1>
+  <hr>
+
+  @if (session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+  @endif
+
+  <div>
+    @if ($errors->any())
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    @endif
+  </div>
+
+               <form action="{{ route('stands.store') }}" method="POST">
+    @csrf
+    <div class="form-group">
+      <label for="numero">Numéro du stand</label>
+      <input type="text" class="form-control" id="numero" name="numero" required>
+    </div>
+    <div class="form-group">
+      <label for="emplacement">Emplacement</label>
+      <input type="text" class="form-control" id="emplacement" name="emplacement" required>
+    </div>
+    <div class="form-group">
+      <label for="tarif_de_location">Tarif de location</label>
+      <input type="number" class="form-control" id="tarif_de_location" name="tarif_de_location" required>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input type="text" class="form-control" id="status" name="status" required>
+    </div>
+    <div class="form-group">
+<select class="form-control select-custom"  name="event_id">
+    @foreach ($events as $event)
+        <option value="{{ $event->id }}">{{ $event->name }}</option>
+    @endforeach
+</select>
+</div>
+    <button type="submit" class="btn btn-primary">Ajouter Stand</button>
+    <a class="btn btn-warning" href="{{ route('stands.index') }}">Revenir à la liste des stands</a>
+  </form>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        const articleMore = document.getElementById("article-more");
-        const readMoreLink = document.getElementById("read-more-link");
-
-        readMoreLink.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (articleMore.style.display === "none") {
-                articleMore.style.display = "inline";
-                readMoreLink.textContent = "Voir moins";
-            } else {
-                articleMore.style.display = "none";
-                readMoreLink.textContent = "Voir plus";
-            }
-        });
-    </script>
-        <!-- liste article -->
+            </div>
+            <!-- ajouter article -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
@@ -492,7 +469,7 @@
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="/plugins/chart.js/Chart.min.js"></script>
+<!-- <script src="/plugins/chart.js/Chart.min.js"></script> -->
 <!-- Sparkline -->
 <script src="/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->

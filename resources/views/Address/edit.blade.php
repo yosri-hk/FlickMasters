@@ -15,10 +15,12 @@
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
 
-  <link href="{{ asset('ArticleCss/article.css') }}" rel="stylesheet">
 <!-- bootstrap mta3i -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- bootstrap mta3i  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- bootstrap mta3i -->  
+  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
+
+
 
 
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -187,19 +189,8 @@
       <span class="brand-text font-weight-light">FlickMasters</span>
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
-        </div>
-      </div>
-
-      <!-- SidebarSearch Form -->
+   
+   <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -240,7 +231,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -249,35 +240,6 @@
                 <a href="/articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Modifier Article</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-               Cart
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/ajouterArticle" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Cart</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/articles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Cart</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/articles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modifier Cart</p>
                 </a>
               </li>
             </ul>
@@ -296,11 +258,48 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Produit</p>
                 </a>
+                <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ajouter Produit</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Afficher Liste</p>
+                </a>
+            </li>
+        </ul>
               </li>
               <li class="nav-item">
                 <a href="/pages/UI/icons.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+              Cart
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/pages/forms/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Cart </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/forms/advanced.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Carts</p>
                 </a>
               </li>
             </ul>
@@ -372,86 +371,68 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-        <!-- liste article -->
-        <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <h1 class="text-center">Liste des paniers</h1>
-                <hr>
-                <div class="d-flex justify-content-center">
-                    <a href="/carts/create" class="btn btn-info">Ajouter un panier</a>
+<section class="content">
+    <div class="container-fluid">
+        <!-- Edit product -->
+        <div id="editProductContent">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-9">
+                        <h1 class="text-center">Update adress</h1>
+                        <hr>
+
+                        @if (session("status"))
+                            <div class="alert alert-success">
+                                {{ session("status") }}
+                            </div>
+                        @endif
+
+                        <div>
+                            @if($errors->any())
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                        <form action="{{ route('Address.update', ['adresse' => $adresse]) }}" method="POST">
+    @csrf
+    @method('PUT') <!-- Use the appropriate HTTP method (PUT) for updating -->
+
+    <div class="mb-3">
+        <label for="Deliveryaddresse" class="form-label">Deliveryaddresse</label>
+        <input type="text" class="form-control" id="Deliveryaddresse" name="Deliveryaddresse" value="{{ $adresse->Deliveryaddresse }}" required>
+    </div>
+
+   
+   
+                            <div class="mb-3">
+                                <label for="City" class="form-label">City</label>
+                                <input type="text" class="form-control" id="City" name="City" value="{{ $adresse->City }}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Postal_code" class="form-label">Postal_code</label>
+                                <input type="number" class="form-control" id="Postal_code" name="Postal_code" value="{{ $adresse->Postal_code }}">
+                            </div>
+                           
+
+ 
+
+
+                            <button type="submit" class="btn btn-primary" style="margin-right: 20px">Update</button>
+                            <a class="btn btn-warning" href="/adresss">Revenir à la liste des adresses</a>
+                        </form>
+                    </div>
                 </div>
-                <hr>
-                @if (session("status"))
-                <div class="alert alert-success">
-                  {{session("status")}}
-                </div>
-                @endif
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="text-center">UserId</th>
-                            <th class="text-center"> items</th>
-                            <th class="text-center">Delivery_address</th>
-                            <th class="text-center">Discounts</th>
-                         
-                            <th class="text-center">subtotals</th>
-                            <th class="text-center">payment-method</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($carts as $cart)
-                        <tr class="article-row">
-                            <td class="text-center">{{$cart->user_id}}</td>
-                            <td class="text-center">
-                                {{$cart->items}}
-                            </td>
-                            <td class="text-center">{{$cart->Delivery_address}}</td>
-                            <td class="text-center">{{$cart->discounts}}</td>
-                      
-                            <td class="text-center">{{$cart->subtotal}}</td>
-                            <td class="text-center">{{$cart->payment_method}}</td>
-                            <td class="text-center">
-                            <div class="btn-group">
-                   
-                    <a href="{{ route('Cart.edit', $cart->id) }}" class="btn btn-primary">Edit</a>
-                    <form method="POST" action="{{ route('cart.delete', $cart->id) }}" style="display: inline;">
-@csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this order?')">Delete</button>
-                    </form>
-                  </div>
-                            </td>
-                            
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        const articleMore = document.getElementById("article-more");
-        const readMoreLink = document.getElementById("read-more-link");
-
-        readMoreLink.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (articleMore.style.display === "none") {
-                articleMore.style.display = "inline";
-                readMoreLink.textContent = "Voir moins";
-            } else {
-                articleMore.style.display = "none";
-                readMoreLink.textContent = "Voir plus";
-            }
-        });
-    </script>
-        <!-- liste article -->
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            </div>
+            <!-- ajouter article -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
@@ -492,7 +473,7 @@
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="/plugins/chart.js/Chart.min.js"></script>
+<!-- <script src="/plugins/chart.js/Chart.min.js"></script> -->
 <!-- Sparkline -->
 <script src="/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->

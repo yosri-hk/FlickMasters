@@ -7,21 +7,28 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-public function index()
-{
-$carts = Cart::all();
-return view("Cart.indexlist", ['carts' => $carts]);
-}
+    public function index()
+    {
+        $carts = Cart::all();
+        return view('cart.indexlist', ['carts' => $carts]);
+    }
 
-public function create()
-{
-return view('Cart.create');
-}
+    public function create()
+    {
+        return view('cart.create');
+    }
+
 
 public function store(Request $request)
 {
-// Validation
-
+     $request->validate([
+        "user_id" => "required|numeric|min:0",
+        "items" => "required",
+        "Delivery_address" =>"required",
+        "discounts" => "required|numeric|min:0",
+        "subtotal" => "required|numeric|min:0",
+        "payment_method" => "required",
+     ]);
 
 
 // Create a new Cart instance
@@ -32,10 +39,10 @@ Cart::create($request->all());
 return redirect()->route('Cart.indexlist')->with('success', 'Cart created successfully');
 }
 
-public function show(Cart $cart)
-{
-return view('Cart.show', compact('cart'));
-}
+// public function show(Cart $cart)
+// {
+// return view('Cart.show', compact('cart'));
+// }
 
 public function edit(Cart $cart)
 {
@@ -44,7 +51,14 @@ return view('Cart.edit', ['cart' => $cart]);
 
 public function update(Request $request, Cart $cart)
 {
-// Validation
+    $request->validate([
+        "user_id" => "required|numeric|min:0",
+        "items" => "required",
+       "Delivery_address" =>"required",
+        "discounts" => "required|numeric|min:0",
+        "subtotal" => "required|numeric|min:0",
+        "payment_method" => "required",
+     ]);
 
 
 // Update the cart with the new data

@@ -1,0 +1,20 @@
+.select-custom {
+    background-color: #fff; /* Couleur de fond */
+    color: #333; /* Couleur du texte */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px; /* Espacement interne */
+    width: 100%; /* Largeur du champ */
+}
+
+/* Style des options dans le select */
+.select-custom option {
+    background-color: #fff; /* Couleur de fond des options */
+    color: #333; /* Couleur du texte des options */
+}
+
+/* Style des options au survol */
+.select-custom option:hover {
+    background-color: #3498db; /* Couleur de fond au survol */
+    color: #fff; /* Couleur du texte au survol */
+}

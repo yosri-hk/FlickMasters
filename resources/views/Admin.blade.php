@@ -54,6 +54,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('stands.index') }}" class="nav-link"> Stands </a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -192,10 +195,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/rim_img.png" class="img-circle elevation-2" alt="User Image">
+          <img src="https://www.handmadetunisia.com/wp-content/uploads/2021/05/bouteuille-ceramique.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Rim Ben Saad</a>
+          <a href="/admin" class="d-block">Menu</a>
 
         </div>
       </div>
@@ -342,6 +345,29 @@
                 <a href="{{ route('events.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+              Stand
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('stands.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Stand</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('stands.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Stand</p>
                 </a>
               </li>
             </ul>

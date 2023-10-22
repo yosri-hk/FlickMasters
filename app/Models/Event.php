@@ -15,4 +15,8 @@ class Event extends Model
         'location',
         'entry_price',
     ];
+    public function stands()
+    {
+        return $this->hasMany(Stand::class);
+    }
 }
