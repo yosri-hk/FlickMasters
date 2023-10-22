@@ -15,8 +15,11 @@
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
 
-
-
+<!-- bootstrap mta3i -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- bootstrap mta3i -->  
+  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('StandCss/Create.css') }}">
 
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
@@ -50,9 +53,6 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/articles" class="nav-link">Article</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('stands.index') }}" class="nav-link"> Stands </a>
@@ -195,11 +195,8 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="https://www.handmadetunisia.com/wp-content/uploads/2021/05/bouteuille-ceramique.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Menu</a>
-
         </div>
       </div>
 
@@ -244,7 +241,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -259,46 +256,23 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-shopping-bag"></i>              
+              <i class="nav-icon fas fa-tree"></i>
               <p>
                 Produit
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ajouter Produit</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Afficher Liste</p>
-                </a>
-            </li>
-        </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Ordre
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/orders/create" class="nav-link">
+                <a href="/pages/UI/general.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Ordre</p>
+                  <p>Ajouter Produit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/orders" class="nav-link">
+                <a href="/pages/UI/icons.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Ordre</p>
+                  <p>Afficher Liste</p>
                 </a>
               </li>
             </ul>
@@ -367,7 +341,7 @@
               <li class="nav-item">
                 <a href="{{ route('stands.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Stand</p>
+                  <p>Afficher Liste</p>
                 </a>
               </li>
             </ul>
@@ -398,6 +372,63 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+            <!-- ajouter article -->
+            <div id="ajouterContent">
+            <div class="container">
+        <div class="row justify-content-center">
+        <h1>Création de Stand</h1>
+  <hr>
+
+  @if (session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+  @endif
+
+  <div>
+    @if ($errors->any())
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    @endif
+  </div>
+
+               <form action="{{ route('stands.store') }}" method="POST">
+    @csrf
+    <div class="form-group">
+      <label for="numero">Numéro du stand</label>
+      <input type="text" class="form-control" id="numero" name="numero" required>
+    </div>
+    <div class="form-group">
+      <label for="emplacement">Emplacement</label>
+      <input type="text" class="form-control" id="emplacement" name="emplacement" required>
+    </div>
+    <div class="form-group">
+      <label for="tarif_de_location">Tarif de location</label>
+      <input type="number" class="form-control" id="tarif_de_location" name="tarif_de_location" required>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input type="text" class="form-control" id="status" name="status" required>
+    </div>
+    <div class="form-group">
+<select class="form-control select-custom"  name="event_id">
+    @foreach ($events as $event)
+        <option value="{{ $event->id }}">{{ $event->name }}</option>
+    @endforeach
+</select>
+</div>
+    <button type="submit" class="btn btn-primary">Ajouter Stand</button>
+    <a class="btn btn-warning" href="{{ route('stands.index') }}">Revenir à la liste des stands</a>
+  </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            </div>
+            <!-- ajouter article -->
         </div>
         <!-- /.row -->
         <!-- Main row -->

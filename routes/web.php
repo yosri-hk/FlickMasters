@@ -9,9 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PromotionController;
-
-
-
+use App\Http\Controllers\StandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,3 +96,6 @@ Route::delete('/carts/{cart}',[CartController::class,'destroy'])->name('cart.del
 
 // Route configuration for Event entity
 Route::resource('events', EventController::class);
+
+// Route configuration for Stand entity
+Route::resource('stands', StandController::class);
