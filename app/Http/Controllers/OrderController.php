@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Models\Coupon;
 
 class OrderController extends Controller
 {
@@ -32,11 +33,35 @@ return view('orders.index', compact('orders', 'current_page'));
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-       Order::create($request->all());
-       return redirect()->route('orders.index')->with('success','order created successfully');
+{
+    $couponCode = $request->input('code'); // Get the coupon code from the request
+    $orderData = [
+        'customer_id' => $request->input('customer_id'),
+        'product_id' => $request->input('product_id'),
+        'quantity' => $request->input('quantity'),
+        'order_date' => $request->input('order_date'),
+        'delivery_address' => $request->input('delivery_address'),
+        'total_price' => $request->input('total_price'),
+    ];
+
+    if ($couponCode) {
+        // Find the coupon with the provided code
+        $coupon = Coupon::where('code', $couponCode)->first();
+
+        if (!$coupon) {
+            // Handle the case where the coupon code is invalid
+            return redirect()->back()->with('error', 'Invalid coupon code. Please try again.');
+        } else {
+            // If a valid coupon was found, add the coupon_id to the order data
+            $orderData['coupon_id'] = $coupon->id;
+        }
     }
 
+    // Create the order with or without a coupon
+    Order::create($orderData);
+
+    return redirect()->route('orders.index')->with('success', 'Order created successfully');
+}
     /**
      * Display the specified resource.
      */

@@ -11,7 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\StandController;
-
+use App\Http\Controllers\CouponController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,7 +45,7 @@ Route::delete('/deleteArticle/{article}/delete',[ArticleController::class,'delet
 
 //Products 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::resource('orders',OrderController::class );
+
 
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
@@ -126,5 +126,10 @@ Route::delete('/adresss/{adresse}',[AdressetController::class,'destroy'])->name(
 
 Route::resource('events', EventController::class);
 
+//route order
+Route::resource('orders',OrderController::class );
+
+//route coupon
+Route::resource('coupons', CouponController::class);
 // Route configuration for Stand entity
 Route::resource('stands', StandController::class);
