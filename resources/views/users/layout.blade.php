@@ -226,7 +226,7 @@
 									<a href="#home">Home</a>
 								</li>
 								<li><a href="{{ route('stores.show', ['store' => $store]) }}">Stores</a></li>
-								<li class="smooth-menu"><a href="#service">Service</a></li>
+								<li class=""><a href="#service">Service</a></li>
 								<li class="smooth-menu"><a href="#project">Project</a></li>
 								<li class="smooth-menu"><a href="#team">Team</a></li>
 								<li class="smooth-menu"><a href="#blog">Blog</a></li>
