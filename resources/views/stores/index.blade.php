@@ -34,7 +34,8 @@
                 <td>{{ $store->description }}</td>
                 <td>
                   <div class="btn-group">
-                    
+                  <a href="{{ route('stores.addproduct', $store->id) }}" class="btn btn-sm btn-warning">Products</a>
+                  <a href="{{ route('stores.attachanddetach', $store->id) }}" class="btn btn-sm btn-info">Promotions</a>
                     <a href="{{ route('stores.edit', $store->id) }}" class="btn btn-primary">Edit</a>
                     <form method="POST" action="{{ route('stores.destroy', $store->id) }}" style="display: inline;">
                       @csrf

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\Promotion;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 
@@ -33,10 +34,11 @@ class StoreController extends Controller
         return redirect('/stores');
     }
 
-    public function show(Store $store)
+    public function show()
     {
-        // Display a specific store
-        return view('stores.show', compact('store'));
+        // Retrieve and display a list of all stores
+        $stores = Store::all();
+        return view('stores.show', compact('stores'));
     }
 
     public function edit(Store $store)
@@ -46,6 +48,7 @@ class StoreController extends Controller
     }
 
     public function update(Request $request, Store $store)
+    
     {
         // Validate and update the store in the database
         $validatedData = $request->validate([
@@ -92,8 +95,23 @@ class StoreController extends Controller
 
     return view('stores.attachanddetach', compact('store', 'promotions'));
 }
-
-
-
+public function addProducttoStore(Request $request, Store $store)
+{
+    $validatedData = $request->validate([
+        'product_id' => 'required|exists:products,id',
+    ]);
+    $store->products()->attach($validatedData['product_id']);
+    return redirect()->back(); 
+}
+public function addProduct(Store $store){
+    $products = Product::all();
+    return view('stores.addproduct', compact('store' , 'products'));
+}
+public function listProducts(Store $store)
+    {
+        $products = $store->products;
+        // Display the list of coupons associated with the store
+        return view('stores.products', compact('store', 'products'));
+    }
 }
 

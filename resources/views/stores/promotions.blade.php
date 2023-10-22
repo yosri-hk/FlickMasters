@@ -11,6 +11,6 @@
     @else
         <p>No promotions available for this store.</p>
     @endif
-
+    
     <a href="{{ route('stores.attachanddetach', ['store' => $store]) }}" class="btn btn-primary">Attach/Detach Promotions</a>
 @endsection
