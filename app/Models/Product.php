@@ -16,6 +16,10 @@ class Product extends Model
         "weight",
         "image_url",
     ];
+    public function order()
+{
+    return $this->hasOne(Order::class, 'product_id');
+}
 
 
 }
