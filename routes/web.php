@@ -13,6 +13,10 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\ParticipationController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\FrontCartController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +30,13 @@ use App\Http\Controllers\CouponController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+//   Route::get('/Cart', function index () {
+//       return view('Cart.Cartt');
+//  });
+
+Route::get('/Cart',[CartController::class,"index"])->name('Cartt');
 
 Route::get('/admin', function () {
     return view('Admin');

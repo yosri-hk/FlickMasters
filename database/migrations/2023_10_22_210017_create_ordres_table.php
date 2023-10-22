@@ -18,12 +18,13 @@ return new class extends Migration
             $table->decimal('total_price', 10, 2);
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('product_id');
-           
+            $table->unsignedBigInteger('cart_id')->nullable();
             $table->integer('quantity');
            
             $table->timestamps();
              /*$table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');*/
+            $table->foreign('cart_id')->references('id')->on('carts');
         });
     }
 

@@ -404,25 +404,43 @@
         <label for="user_id" class="form-label">User_id</label>
         <input type="text" class="form-control" id="user_id" name="user_id" value="{{ $cart->user_id }}" required>
     </div>
+    <?php
+// Exemple de récupération des commandes depuis une source de données
+$allOrders = App\Models\Order::all();
+?>
 
-    <div class="mb-3">
-        <label for="items" class="form-label">Items</label>
-        @php
-            // Récupérer les éléments du texte (supposons que les éléments sont séparés par des virgules)
-            $items = isset($cart) ? explode('mm', $cart->items) : [1,2,3,4,5];
-        @endphp
-        <select class="form-select" id="items" name="items">
-            @foreach ($items as $item)
-            <option value="<?php echo trim($item); ?>"><?php echo trim($item); ?></option>
-            @endforeach
-        </select>
-    </div>
+<div class="mb-3">
+    <label for="orders" class="form-label">Orders</label>
+    <select class="form-select" id="orders" name="orders[]" multiple>
+        <?php foreach ($allOrders as $order): ?>
+            <option value="<?php echo $order->id; ?>">
+                Order ID: <?php echo $order->id; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="Delivery_address" class="form-label">Delivery Address</label>
+    <select class="form-select" id="Delivery_address" name="Delivery_address">
+        <option value="">Select an address</option>
+        <?php
+        // Récupérer toutes les adresses depuis la base de données
+        $addresses = App\Models\Adresse::all();
+        
+        // Itérer à travers les adresses
+        foreach ($addresses as $address) {
+            // Concaténer les attributs pour former l'adresse
+            $fullAddress = $address->Deliveryaddresse . ', ' . $address->City . ', ' . $address->Postal_code;
+            ?>
+            <option value="<?php echo $address->id; ?>"><?php echo $fullAddress; ?></option>
+            <?php
+        }
+        ?>
+    </select>
+</div>
    
-                            <div class="mb-3">
-                                <label for="discounts" class="form-label">Discounts</label>
-                                <input type="number" class="form-control" id="discounts" name="discounts" value="{{ $cart->discounts }}" required>
-                            </div>
-                            
+                          
                             <div class="mb-3">
                                 <label for="subtotal" class="form-label">Subtotal</label>
                                 <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ $cart->subtotal }}">
