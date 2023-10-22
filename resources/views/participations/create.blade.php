@@ -174,7 +174,7 @@
 												</div><!--/.form-group-->
 												</div><!--/.col-->
 											</div><!--/.row-->
-											<div class="row">
+											<div class="row" >
 												<div class="col-sm-12">
 													<div class="single-contact-btn pull-right">
 														<button class="contact-btn" type="submit">Participer</button>
