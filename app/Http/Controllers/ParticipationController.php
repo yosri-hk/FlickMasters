@@ -22,17 +22,16 @@ class ParticipationController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nom_participant' => 'required',
-            'cin_participant' => 'required|unique:participations,cin_participant',
-            'adresse_email' => 'required|email',
-            'date_de_participation' => 'required|date',
-            'event_id' => 'required',
+        $data = $request->validate([
+            "nom_participant" => "required|string|between:5,20",
+            "cin_participant" => "required|string|between:5,100",
+            "adresse_email" => "required|email",
+            "telephone" => "required|string",
+            "event_id" => "required|numeric",  
         ]);
-
-        Participation::create($request->all());
-
-        return redirect()->route('/');
+        //Participation::create($request->all());
+        $participation=Participation::create($data);
+        return redirect('/');
 
     }
 
