@@ -73,101 +73,6 @@
 		
 		
 		
-		<!--header start-->
-		<section id="home"  class="header">
-			<div class="container">	
-				<div class="header-left">
-					<ul class="pull-left">
-						<li>
-							<a href="#">
-								<i class="fa fa-phone" aria-hidden="true"></i> +992 563 542
-							</a>
-						</li><!--/li-->
-						<li>
-							<a href="#">
-								<i class="fa fa-envelope" aria-hidden="true"></i>info@mail.com
-							</a>
-						</li><!--/li-->
-					</ul><!--/ul-->
-				</div><!--/.header-left -->
-				<div class="header-right pull-right">
-					<ul>
-						<li class="reg">
-							<a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">
-								Register
-							</a>
-								/
-							<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
-								Log in
-							</a>
-							
-							<!-- small modal -->
-							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-								<div class="modal-dialog modal-sm" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											 	<span aria-hidden="true">
-											 		<i class="fa fa-close"></i>
-											 	</span>
-											 </button> 
-											<h4 class="modal-title" id="mySmallModalLabel">
-												Sign In
-											</h4> 
-											<form class="sm-frm" style="padding:25px">
-												<label>Name :</label>
-												<input type="text" class="form-control" placeholder="Enter Email">
-												<label>Passoward :</label>
-												<input type="text" class="form-control" placeholder="Enter Passoward">
-												<label><input type="checkbox" name="personality"> Remenber Me</label>
-												<button type="button" class="btn btn-default pull-right">Submit</button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<!-- large modal -->
-							<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-								<div class="modal-dialog modal-lg" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											 	<span aria-hidden="true">
-											 		<i class="fa fa-close"></i>
-											 	</span>
-											</button>  
-											<h4 class="modal-title" id="myLargeModalLabel">Register</h4> 
-											<form class="lg-frm" style="padding:25px">
-												<label>Name :</label>
-												<input type="text" class="form-control" placeholder="Enter Name">
-												<label>Email :</label>
-												<input type="text" class="form-control" placeholder="Enter Email">
-												<label>Passoward :</label>
-												<input type="text" class="form-control" placeholder="Enter Passoward">
-												<button type="button" class="btn btn-default pull-right">Submit</button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li><!--/li -->
-						<li>
-							<div class="social-icon">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								</ul><!--/.ul -->
-							</div><!--/.social-icon -->
-						</li><!--/li -->
-					</ul><!--/ul -->
-				</div><!--/.header-right -->
-			</div><!--/.container -->	
-
-		</section><!--/.header-->	
-		<!--header end-->
 		
 		<!--menu start-->
 		<section id="menu">
@@ -222,54 +127,122 @@
 		</section><!--/#menu-->
 		<!--menu end-->
 		
-        <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <h1 class="text-center">Cart</h1>
-                <hr>
-                <div class="d-flex justify-content-center">
-                    <a href="/carts/create" class="btn btn-info">Add Cart</a>
+       
+		<br></br>
+			   <section class="content">
+    <div class="container-fluid">
+        <!-- Edit product -->
+		
+        <div id="editProductContent">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <h1 class="text-center">Update Cart</h1>
+                        <hr>
+
+                        @if (session("status"))
+                            <div class="alert alert-success">
+                                {{ session("status") }}
+                            </div>
+                        @endif
+
+                        <div>
+                            @if($errors->any())
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+						@section('content')
+						<br></br>
+						
+                        <form action="{{ route('Cart.update', ['cart' => $cart]) }}" method="POST">
+    @csrf
+    @method('PUT') <!-- Use the appropriate HTTP method (PUT) for updating -->
+
+    <div class="mb-3">
+        <label for="user_id" class="form-label">User_id</label>
+        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ $cart->user_id }}" required>
+    </div>
+	<br></br>
+    <?php
+// Exemple de récupération des commandes depuis une source de données
+$allOrders = App\Models\Order::all();
+?>
+
+<div class="mb-3">
+    <label for="orders" class="form-label">Orders</label>
+    <select class="form-select" id="orders" name="orders[]" multiple>
+        <?php foreach ($allOrders as $order): ?>
+            <option value="<?php echo $order->id; ?>">
+                Order ID: <?php echo $order->id; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+<br></br>
+<div class="mb-3">
+    <label for="Delivery_address" class="form-label">Delivery Address</label>
+    <select class="form-select" id="Delivery_address" name="Delivery_address">
+        <option value="">Select an address</option>
+        <?php
+        // Récupérer toutes les adresses depuis la base de données
+        $addresses = App\Models\Adresse::all();
+        
+        // Itérer à travers les adresses
+        foreach ($addresses as $address) {
+            // Concaténer les attributs pour former l'adresse
+            $fullAddress = $address->Deliveryaddresse . ', ' . $address->City . ', ' . $address->Postal_code;
+            ?>
+            <option value="<?php echo $address->id; ?>"><?php echo $fullAddress; ?></option>
+            <?php
+        }
+        ?>
+    </select>
+</div>
+
+   
+                          
+                            <div class="mb-3" style="display: none;">
+                                <label for="subtotal" class="form-label">Subtotal</label>
+                                <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ $cart->subtotal }}">
+                            </div>
+							<br></br>
+                            <div class="mb-3">
+    <label for="payment_method" class="form-label">Payment Method</label>
+
+ 
+    <?php
+    // Récupérer la valeur actuelle de payment_method
+    $currentPaymentMethod = isset($cart) ? $cart->payment_method : '';
+
+    // Définir les options possibles pour le bouton radio
+    $paymentMethods = ['credit_card', 'paypal', 'bank_transfer'];
+    ?>
+
+    <?php foreach ($paymentMethods as $method): ?>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment_method" id="payment_method_<?= $method ?>" value="<?= $method ?>" <?= ($currentPaymentMethod === $method) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="payment_method_<?= $method ?>">
+                <?= ucfirst(str_replace('_', ' ', $method)) ?>
+            </label>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
+                            <button type="submit" class="btn btn-primary" style="margin-right: 20px">Update</button>
+                            <a class="btn btn-warning" href="/carts/show">Revenir à la liste des paniers</a>
+                        </form>
+                    </div>
                 </div>
-                <hr>
-                @if (session("status"))
-                <div class="alert alert-success">
-                  {{session("status")}}
-                </div>
-                @endif
-				<table class="table custom-table">
-    <thead>
-        <tr>
-            <th class="text-center">User ID</th>
-            <th class="text-center">Items</th>
-            <th class="text-center">Delivery Address</th>
-            <th class="text-center">Discounts</th>
-            <th class="text-center">Subtotals</th>
-            <th class="text-center">Payment Method</th>
-        </tr>
-    </thead>
-    <tbody>
-	@foreach($carts as $cart)
-                        <tr class="article-row">
-                            <td class="text-center">{{$cart->user_id}}</td>
-                            <td class="text-center">
-                                {{$cart->items}}
-                            </td>
-                            <td class="text-center">{{$cart->Delivery_address}}</td>
-                            <td class="text-center">{{$cart->discounts}}</td>
-                      
-                            <td class="text-center">{{$cart->subtotal}}</td>
-                            <td class="text-center">{{$cart->payment_method}}</td>
-                            <td class="text-center">
-                            <div class="btn-group">
-							<a href="{{ route('Cart.edit', $cart->id) }}" class="btn btn-primary">Edit</a>
-                    <form method="POST" action="{{ route('cart.delete', $cart->id) }}" style="display: inline;">
-@csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this order?')">Delete</button>
-                    </form>
-								@endforeach
-    </tbody>
-</table>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 					
                 <tbody>
@@ -310,7 +283,7 @@
 
 	
 		
-
+<br></br>
 		
 
 		

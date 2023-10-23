@@ -18,35 +18,39 @@ class CartController extends Controller
      public function show() {
         $carts = Cart::all(); // Remplacez Cart::all() par votre requête pour obtenir les paniers
     
-        $addresses = Adresse::all(); // Récupérez la liste des adresses depuis votre modèle Address
+        $addr = Adresse::all(); // Récupérez la liste des adresses depuis votre modèle Address
     
-        return view('Cart.show', compact('carts', 'addresses'));
+        return view('Cart.show', compact('carts', 'addr'));
     }
     public function search(Request $request)
-{
-    $selectedAddressId = $request->input('adresss');
-
-    // Récupérez la liste de toutes les adresses pour la liste déroulante.
-    $addresses = Adresse::all(); // Remplacez 'Adresse' par le nom de votre modèle d'adresse
-
-    $results = Cart::with('addresses')->whereHas('addresses', function ($query) use ($selectedAddressId) {
-        $query->where('id', $selectedAddressId);
-    })->get();
-
-    return view('Cart.show', compact('results', 'addresses', 'selectedAddressId'));
-}
-    public function calculateSubtotalForOrders(array $orderIds)
     {
-        $orders = Order::whereIn('id', $orderIds)->get();
-    
-        $subtotal = 0;
-    
-        foreach ($orders as $order) {
-            $subtotal += $order->total_price;
-        }
-    
-        return $subtotal;
+        $selectedAddressId = $request->input('address'); // Correct the input name
+        
+        // Retrieve the list of all addresses for the dropdown.
+        $addr = Adresse::all(); // Use the correct model name 'Adresse'
+        $carts = Cart::all();
+        $results = Cart::with('addresses') // Correct the relationship method name
+            ->whereHas('addresses', function ($query) use ($selectedAddressId) {
+                $query->where('id', $selectedAddressId);
+            })
+            ->get();
+        
+        return view('Cart.show', compact('results', 'carts','addr', 'selectedAddressId','carts'));
     }
+    
+    
+    // public function calculateSubtotalForOrders(array $orderIds)
+    // {
+    //     $orders = Order::whereIn('id', $orderIds)->get();
+    
+    //     $subtotal = 0;
+    
+    //     foreach ($orders as $order) {
+    //         $subtotal += $order->total_price;
+    //     }
+    
+    //     return $subtotal;
+    // }
     public function create()
     {   
        
@@ -78,7 +82,7 @@ public function store(Request $request)
 Cart::create($request->all());
 
 // Redirect to index with success message
-return redirect()->route('Cart.indexlist')->with('success', 'Cart created successfully');
+return redirect()->route('Cart.show')->with('success', 'Cart created successfully');
 }
 
 // public function show(Cart $cart)
@@ -89,6 +93,10 @@ return redirect()->route('Cart.indexlist')->with('success', 'Cart created succes
 public function edit(Cart $cart)
 {
 return view('Cart.edit', ['cart' => $cart]);
+}
+public function edit1(Cart $cart)
+{
+return view('Cart.updated', ['cart' => $cart]);
 }
 
 public function update(Request $request, Cart $cart)
@@ -107,8 +115,26 @@ public function update(Request $request, Cart $cart)
 $cart->update($request->all());
 
 // Redirect to index with success message
-return redirect()->route('Cart.indexlist')->with('success', 'Cart updated successfully');
+return redirect()->route('Cart.show')->with('success', 'Cart updated successfully');
 }
+// public function update1(Request $request, Cart $cart)
+// {
+//     $request->validate([
+//         "user_id" => "required|numeric|min:0",
+//         "orders" => "required",
+//        "Delivery_address" =>"required",
+       
+//         "subtotal" => "required|numeric|min:0",
+//         "payment_method" => "required",
+//      ]);
+
+
+// // Update the cart with the new data
+// $cart->update1($request->all());
+
+// // Redirect to index with success message
+// return redirect()->route('Cart.show')->with('success', 'Cart updated successfully');
+// }
 
 public function destroy(Cart $cart)
 {
@@ -116,7 +142,7 @@ public function destroy(Cart $cart)
 $cart->delete();
 
 // Redirect to index with success message
-return redirect()->route('Cart.indexlist')->with('success', 'Cart deleted successfully');
+return redirect()->route('Cart.show')->with('success', 'Cart deleted successfully');
 
 }
 

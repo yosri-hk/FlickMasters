@@ -73,33 +73,7 @@
 		
 		
 		
-		<!--header start-->
-		<section id="home"  class="header">
-			<div class="container">	
-				<div class="header-left">
-					<ul class="pull-left">
-						<li>
-							<a href="#">
-								<i class="fa fa-phone" aria-hidden="true"></i> +992 563 542
-							</a>
-						</li><!--/li-->
-						<li>
-							<a href="#">
-								<i class="fa fa-envelope" aria-hidden="true"></i>info@mail.com
-							</a>
-						</li><!--/li-->
-					</ul><!--/ul-->
-				</div><!--/.header-left -->
-				<div class="header-right pull-right">
-					<ul>
-						<li class="reg">
-							<a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">
-								Register
-							</a>
-								/
-							<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
-								Log in
-							</a>
+		
 							
 							<!-- small modal -->
 							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -153,17 +127,10 @@
 							</div>
 						</li><!--/li -->
 						<li>
-							<div class="social-icon">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								</ul><!--/.ul -->
-							</div><!--/.social-icon -->
+							
 						</li><!--/li -->
 					</ul><!--/ul -->
-				</div><!--/.header-right -->
+				</div><!--/header-right -->
 			</div><!--/.container -->	
 
 		</section><!--/.header-->	
@@ -236,8 +203,8 @@
                     <label for="address" class="mr-2">Select an address :</label>
                     <select name="address" class="form-control">
                         <option value="">All addresses</option>
-                        @foreach ($addresses as $adresss)
-                            <option value="{{ $adresss->id }}">{{ $adresss->Deliveryaddresse }}, {{ $adresss->City }}, {{ $adresss->Postal_code }}</option>
+                        @foreach ($addr as $address)
+                            <option value="{{ $address->id }}">{{ $address->Deliveryaddresse }}, {{ $address->City }}, {{ $address->Postal_code }}</option>
                         @endforeach
                     </select>
                     
@@ -280,7 +247,7 @@
                     <td class="text-center">{{ $cart->payment_method }}</td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <a href="{{ route('Cart.edit', $cart->id) }}" class="btn btn-primary ">Edit</a>
+                            <a href="{{ route('Cart.updated', $cart->id) }}" class="btn btn-primary ">Edit</a>
                             <form method="POST" action="{{ route('cart.delete', $cart->id) }}" style="display: inline; margin-left: 10px;">
                                 @csrf
                                 @method('DELETE')

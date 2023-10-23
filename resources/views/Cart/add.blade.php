@@ -73,101 +73,6 @@
 		
 		
 		
-		<!--header start-->
-		<section id="home"  class="header">
-			<div class="container">	
-				<div class="header-left">
-					<ul class="pull-left">
-						<li>
-							<a href="#">
-								<i class="fa fa-phone" aria-hidden="true"></i> +992 563 542
-							</a>
-						</li><!--/li-->
-						<li>
-							<a href="#">
-								<i class="fa fa-envelope" aria-hidden="true"></i>info@mail.com
-							</a>
-						</li><!--/li-->
-					</ul><!--/ul-->
-				</div><!--/.header-left -->
-				<div class="header-right pull-right">
-					<ul>
-						<li class="reg">
-							<a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">
-								Register
-							</a>
-								/
-							<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
-								Log in
-							</a>
-							
-							<!-- small modal -->
-							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-								<div class="modal-dialog modal-sm" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											 	<span aria-hidden="true">
-											 		<i class="fa fa-close"></i>
-											 	</span>
-											 </button> 
-											<h4 class="modal-title" id="mySmallModalLabel">
-												Sign In
-											</h4> 
-											<form class="sm-frm" style="padding:25px">
-												<label>Name :</label>
-												<input type="text" class="form-control" placeholder="Enter Email">
-												<label>Passoward :</label>
-												<input type="text" class="form-control" placeholder="Enter Passoward">
-												<label><input type="checkbox" name="personality"> Remenber Me</label>
-												<button type="button" class="btn btn-default pull-right">Submit</button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<!-- large modal -->
-							<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-								<div class="modal-dialog modal-lg" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											 	<span aria-hidden="true">
-											 		<i class="fa fa-close"></i>
-											 	</span>
-											</button>  
-											<h4 class="modal-title" id="myLargeModalLabel">Register</h4> 
-											<form class="lg-frm" style="padding:25px">
-												<label>Name :</label>
-												<input type="text" class="form-control" placeholder="Enter Name">
-												<label>Email :</label>
-												<input type="text" class="form-control" placeholder="Enter Email">
-												<label>Passoward :</label>
-												<input type="text" class="form-control" placeholder="Enter Passoward">
-												<button type="button" class="btn btn-default pull-right">Submit</button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li><!--/li -->
-						<li>
-							<div class="social-icon">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								</ul><!--/.ul -->
-							</div><!--/.social-icon -->
-						</li><!--/li -->
-					</ul><!--/ul -->
-				</div><!--/.header-right -->
-			</div><!--/.container -->	
-
-		</section><!--/.header-->	
-		<!--header end-->
 		
 		<!--menu start-->
 		<section id="menu">
@@ -221,7 +126,7 @@
 
 		</section><!--/#menu-->
 		<!--menu end-->
-		
+		<br></br>
         <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -251,6 +156,7 @@
                </div>
              
     @section('content')
+	<br></br>
 <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
 <form action="{{ isset($cart) ? route('Cart.create', $cart->id) : route('Cart.store') }}" method="POST">
     @csrf
@@ -300,21 +206,14 @@ $allOrders = App\Models\Order::all();
     </select>
 </div>
 
-
    
-<div class="mb-3">
+<div class="mb-3"style="display: none;">
     <label for="subtotal" class="form-label">Subtotal</label>
-    <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ isset($cart) ? $cart->calculateSubtotalForOrders() : 567}}" hidden>
+	<input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ isset($cart) ?  : 340 }}" hidden >
+
 </div>
 
-
-
-
-
-
-
-
-
+<br></br>
 
     <div class="mb-3">
     <label class="form-label">Payment Method</label>
@@ -336,6 +235,7 @@ $allOrders = App\Models\Order::all();
         </div>
     <?php endforeach; ?>
 </div>
+<br></br>
     <button type="submit" class="btn btn-primary">{{ isset($cart) ? 'Update' : 'Add' }} Cart</button>
     <a class="btn btn-warning" href="/carts/show">Return to the list of carts</a>
 </form>
@@ -382,7 +282,9 @@ $allOrders = App\Models\Order::all();
 
 
 	
-		
+		<br></br>
+		<br></br>
+		<br></br>
 
 		
 
