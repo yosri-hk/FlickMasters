@@ -104,7 +104,10 @@
 								<li class="nav-item d-none d-sm-inline-block">
 									<a href="/">Home</a>
 								</li>
+								<li class="nav-item d-none d-sm-inline-block"><a href="//productss">Products</a></li>
+
 								<li class="nav-item d-none d-sm-inline-block"><a href="/articlelist">Article</a></li>
+
 								<li ><a  href="{{ route('participations.create') }}">Participer</a></li>
 								<li><a href="{{ route('stores.show') }}">Stores</a></li>
 								<li class="smooth-menu"><a href="#team">Team</a></li>

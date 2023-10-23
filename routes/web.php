@@ -17,7 +17,7 @@ use App\Http\Controllers\StandController;
 use App\Http\Controllers\ParticipationController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\FrontCartController;
-
+use App\Http\Controllers\CategorieProductController;
 
 
 
@@ -92,6 +92,7 @@ Route::delete('/deleteArticle/{article}/delete',[ArticleController::class,'delet
 
 //Products 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/listProducts', [ProductController::class, 'listProducts'])->name('products.listProducts');
 
 
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
@@ -99,8 +100,20 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::get('/products/{id}', [ProductController::class, 'details'])->name('products.details');
 
 Route::delete('/products/{product}', [ProductController::class, 'delete'])->name('products.delete');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+// categorieProducts 
+
+Route::get('/categorieProducts', [CategorieProductController::class, 'index'])->name('categorieProducts.index');
+Route::get('/categorieProducts/create', [CategorieProductController::class, 'create'])->name('categorieProducts.create');
+Route::post('/categorieProducts', [CategorieProductController::class, 'store'])->name('categorieProducts.store');
+Route::get('/categorieProducts/{categorieProduct}/edit', [CategorieProductController::class, 'edit'])->name('categorieProducts.edit');
+Route::put('/categorieProducts/{categorieProduct}', [CategorieProductController::class, 'update'])->name('categorieProducts.update');
+Route::delete('/categorieProducts/{categorieProduct}', [CategorieProductController::class, 'delete'])->name('categorieProducts.delete');
+
 //Users
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
