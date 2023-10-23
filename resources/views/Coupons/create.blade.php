@@ -34,36 +34,39 @@
 
 
             <div>
-    @if($errors->any())
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-           </ul>
-           @endif
-           </div>
-           <form method="POST" action="{{ route('coupons.store') }}">
-            @csrf
-        
-           <div class="form-group">
-                <label for="code">Coupon Code</label>
-                <input type="text" name="code" class="form-control" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="discount_amount">Discount Amount</label>
-                <input type="number" name="discount_amount" step="0.01" class="form-control" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="expires_at">Expiration Date</label>
-                <input type="date" name="expires_at" class="form-control">
-            </div>
-        
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Create Coupon</button>
-            </div> 
-        </form>
+              @if($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+          
+          <form method="POST" action="{{ route('coupons.store') }}">
+              @csrf
+          
+              <div class="form-group">
+                  <label for="code">Coupon Code</label>
+                  <input type="text" name="code" class="form-control" required>
+              </div>
+          
+              <div class="form-group">
+                  <label for="discount_amount">Discount Amount</label>
+                  <input type="number" name="discount_amount" step="0.5" class="form-control" required>
+              </div>
+          
+              <div class="form-group">
+                  <label for="expires_at">Expiration Date</label>
+                  <input type="date" name="expires_at" class="form-control" required>
+              </div>
+          
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Create Coupon</button>
+              </div>
+          </form>
+          
         
             </div>
           </div>

@@ -30,6 +30,11 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'code' => 'required',
+            'discount_amount' => 'required|numeric',
+            'expires_at' => 'required|date|after:today', 
+        ]);
         
         Coupon::create($request->all());
         return redirect()->route('coupons.index')->with('success','coupon created successfully');
