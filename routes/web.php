@@ -167,19 +167,30 @@ Route::put('/adresss/{adresse}',[AdressetController::class,"update"])->name('Add
 Route::delete('/adresss/{adresse}',[AdressetController::class,'destroy'])->name('adresse.delete');
 
 
+
+// Route configuration for Stand entity
+Route::resource('stands', StandController::class);
 // Route configuration for Event entity
 Route::resource('events', EventController::class);
+// Route configuration for Participation entity
+//Route::resource('participations', ParticipationController::class);
+//Route::resource('participations', ParticipationController::class)->only(['create', 'store']);
+Route::post('/participations', [ParticipationController::class, "store"])->name('participations.store');
+Route::get('/participations/create', [ParticipationController::class, 'create'])->name('participations.create');
+
+
+
+
+
 
 //route order
 Route::resource('orders',OrderController::class );
 
 //route coupon
 Route::resource('coupons', CouponController::class);
-// Route configuration for Stand entity
-Route::resource('stands', StandController::class);
 
-// Route configuration for Stand entity
-Route::resource('participations', ParticipationController::class);
+
+
 
 
 Route::post('/article/{article}/like',[ArticleController::class,'like'])->name('article.like');

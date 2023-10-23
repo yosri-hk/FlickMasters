@@ -32,8 +32,8 @@ class ParticipationController extends Controller
 
         Participation::create($request->all());
 
-        return redirect()->route('participations.index')
-            ->with('success', 'Participation créée avec succès.');
+        return redirect()->route('home');
+
     }
 
     public function show($id)

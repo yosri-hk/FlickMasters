@@ -94,7 +94,7 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
-								<li class="smooth-menu">
+								<li>
 									<a href="/">Home</a>
 								</li>
 								<li class="smooth-menu"><a href="#about">About</a></li>
@@ -129,7 +129,7 @@
 			<div class="container">
 				<div class="contact-details">
 					<div class="section-header contact-head  text-center" style="margin-right: 450px;">
-						<h2>Ajouter vos participation</h2>
+						<h2>Ajouter votre participation</h2>
 					</div><!--/.section-header-->
 					<div class="contact-content" style="margin-left: 150px;">
 						<div class="row">
@@ -137,7 +137,7 @@
 							<div class="col-sm-5">
 								<div class="single-contact-box">
 									<div class="contact-form">
-										<h3>Saisir votre informations</h3>
+										<h3>Saisir vos informations</h3>
 										<form action="{{ route('participations.store') }}" method="POST">
 											<div class="row">
 												<div class="col-sm-6 col-xs-12">
@@ -177,9 +177,7 @@
 											<div class="row" >
 												<div class="col-sm-12">
 													<div class="single-contact-btn pull-right">
-														<button class="contact-btn" type="submit">Participer</button>
-														<button class="contact-btn" type="button" onclick="window.location.href='/'">back to home</button>
-													</div><!--/.single-single-contact-btn-->
+														<button class="contact-btn" type="submit">Participer</button>												</div><!--/.single-single-contact-btn-->
 												</div><!--/.col-->
 											</div><!--/.row-->
 										</form><!--/form-->
