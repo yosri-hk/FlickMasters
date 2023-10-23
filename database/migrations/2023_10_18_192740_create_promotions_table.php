@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->float('code_percentage');
             $table->timestamps();
+            
         });
     }
 

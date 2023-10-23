@@ -15,10 +15,12 @@
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
 
+
+  <!-- bootstrap mta3i -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- bootstrap mta3i -->  
   <link href="{{ asset('ArticleCss/article.css') }}" rel="stylesheet">
-<!-- bootstrap mta3i -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- bootstrap mta3i  -->
+
 
 
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -53,6 +55,9 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/articles" class="nav-link">Article</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/categories" class="nav-link">Categorie</a>
       </li>
     </ul>
 
@@ -182,7 +187,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin" class="brand-link">
+    <a href="/" class="brand-link">
       <img src="/dist/img/AdminLTELogo.png" alt="FlickMasters" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">FlickMasters</span>
     </a>
@@ -240,7 +245,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
@@ -249,35 +254,6 @@
                 <a href="/articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Modifier Article</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-               Cart
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/ajouterArticle" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Cart</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/articles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Cart</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/articles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modifier Cart</p>
                 </a>
               </li>
             </ul>
@@ -364,9 +340,7 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
+        <h1 class="m-0">Dashboard</h1>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -375,95 +349,10 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-        <!-- liste article -->
-        <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <h1 class="text-center">Liste des paniers</h1>
-                <hr>
-                <div class="d-flex justify-content-center">
-                    <a href="/carts/create" class="btn btn-info">Ajouter un panier</a>
-                </div>
-                <hr>
-                @if (session("status"))
-                <div class="alert alert-success">
-                  {{session("status")}}
-                </div>
-                @endif
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="text-center">UserId</th>
-                            <th class="text-center"> orders</th>
-                            <th class="text-center"> Delivery_address</th>
-                         
-                            <th class="text-center">subtotals</th>
-                            <th class="text-center">payment-method</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($carts as $cart)
-                        <tr class="article-row">
-                            <td class="text-center">{{$cart->user_id}}</td>
-                            <td class="text-center">
-                    <!-- Format the 'orders' column as JSON -->
-                    <pre>{{ json_encode($cart->orders, JSON_PRETTY_PRINT) }}</pre>
-                </td>
-                            <td class="text-center">{{$cart->Delivery_address}}</td>
-                        
-                      
-                            <td class="text-center">{{$cart->subtotal}}</td>
-                            <td class="text-center">{{$cart->payment_method}}</td>
-                            <td class="text-center">
-                            <div class="btn-group">
-                   
-                    <a href="{{ route('Cart.edit', $cart->id) }}" class="btn btn-primary">Edit</a>
-                    <form method="POST" action="{{ route('cart.delete', $cart->id) }}" style="display: inline;">
-@csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this order?')">Delete</button>
-                    </form>
-                  </div>
-                            </td>
-                            
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        const articleMore = document.getElementById("article-more");
-        const readMoreLink = document.getElementById("read-more-link");
-
-        readMoreLink.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (articleMore.style.display === "none") {
-                articleMore.style.display = "inline";
-                readMoreLink.textContent = "Voir moins";
-            } else {
-                articleMore.style.display = "none";
-                readMoreLink.textContent = "Voir plus";
-            }
-        });
-    </script>
-        <!-- liste article -->
-        </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+      <div class="row">
+      @yield('content')
+      </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -492,7 +381,7 @@
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="/plugins/chart.js/Chart.min.js"></script>
+<!-- <script src="/plugins/chart.js/Chart.min.js"></script> -->
 <!-- Sparkline -->
 <script src="/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->

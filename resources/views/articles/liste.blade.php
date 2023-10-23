@@ -1,405 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FlickMasters</title>
+@extends('articles.layout')
+@section('content')
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-
-  <link href="{{ asset('ArticleCss/article.css') }}" rel="stylesheet">
-<!-- bootstrap mta3i -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- bootstrap mta3i  -->
-
-
-  <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="FlickMasters" height="60" width="60">
-  </div>
-
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/articles" class="nav-link">Article</a>
-      </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
+<!-- liste article -->
+<div class="container" id="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <h1 class="text-center">Liste d'Articles</h1>
+            <hr>
+            <div class="d-flex justify-content-center">
+                <a href="/ajouterArticle" class="btn btn-info" id="btn">Ajouter un article</a>
             </div>
-          </form>
-        </div>
-      </li>
-
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
+            <hr>
+            @if (session("status"))
+            <div class="alert alert-success">
+                {{ session("status") }}
             </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="/admin" class="brand-link">
-      <img src="/dist/img/AdminLTELogo.png" alt="FlickMasters" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">FlickMasters</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="/admin" class="d-block">Amine Barguellil</a>
-        </div>
-      </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-
-          <!-- Dashboard -->
-            <!-- Liste Dashboard -->
-          <!-- Dashboard -->
-          
-          <!-- Widgets -->
-          <!-- Layout options -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Article
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/ajouterArticle" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Article</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/articles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Liste</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/articles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modifier Article</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-shopping-bag"></i>              
-              <p>
-                Produit
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Produit</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Liste</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-              Utilisateur
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/pages/forms/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Utilisateur</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Liste</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-              Evenement
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/pages/tables/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Evenement</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Liste</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-        <!-- liste article -->
-        <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <h1 class="text-center">Liste d'Articles</h1>
-                <hr>
-                <div class="d-flex justify-content-center">
-                    <a href="/ajouterArticle" class="btn btn-info">Ajouter un article</a>
-                </div>
-                <hr>
-                @if (session("status"))
-                <div class="alert alert-success">
-                  {{session("status")}}
+            @endif
+            <div class="row">
+              @if (count($articles) > 0)
+                @foreach($articles as $article)
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            @if ($article->image)
+                            <img src="{{ asset('storage/images/' . $article->image) }}" alt="Article Image" width="100" height="100">
+                            @endif
+                            <div class="card-body">
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ route('article.details', ['id' => $article->id]) }}" class="btn btn-primary" id="details-button">
+                                        Détails
+                                        <svg aria-hidden="true" fill="none" focusable="false" height="20" viewBox="0 0 20 20" width="20" id="cds-react-aria-30" class="css-0"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.793 9.5L9.646 2.354l.708-.708L18.707 10l-8.353 8.354-.708-.707 7.147-7.147H2v-1h14.793z" fill="currentColor"></path></svg>
+                                    </a>
+                                </div>
+                                <h5 class="card-text">{{ $article->titre }}</h5>
+                                <p class="card-text">{{ $article->contenu }}</p>
+                                <p class="card-text"><small class="text-muted">{{ $article->datePublication }}</small></p>
+                                <p class="card-text"><small class="text-muted">Auteur: {{ $article->auteur }}</small></p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="btn-group" role="group" aria-label="Actions">
+                                    <a href="{{ route('article.edit', ['article' => $article]) }}" class="btn btn-primary" id="btn">Modifier</a>
+                                    <form method="post" action="{{ route('article.delete', ['article' => $article]) }}">
+                                        @csrf
+                                        @method("delete")
+                                        <input type="submit" value="Supprimer" class="btn btn-danger" id="btn">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                @else
+                <div class="col-md-12">
+                    <p>Aucun article n'a été trouvé.</p>
                 </div>
                 @endif
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Titre de l'article</th>
-                            <th class="text-center">Contenu de l'article</th>
-                            <th class="text-center">Date de publication</th>
-                            <th class="text-center">Auteur de l'article</th>
-                            <th class="text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($articles as $article)
-                        <tr class="article-row">
-                            <td class="text-center">{{$article->titre}}</td>
-                            <td class="text-center">
-                                {{$article->contenu}}
-                            </td>
-                            <td class="text-center">{{$article->datePublication}}</td>
-                            <td class="text-center">{{$article->auteur}}</td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="{{route('article.edit',['article'=>$article])}}" class="btn btn-primary" style="margin-right: 5px">Modifier</a>
-                                    <form method="post" action="{{route('article.delete',['article'=>$article])}}">
-                        @csrf
-                        @method("delete")
-                        <input type="submit" value="Supprimer" class="btn btn-danger">
-                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+            </div>
+
+            <!-- Pagination links -->
+            <div class="d-flex justify-content-center">
+                {{ $articles->onEachSide(1)->links('pagination::bootstrap-4', ['class' => 'custom-pagination']) }}
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- <script>
         const articleMore = document.getElementById("article-more");
         const readMoreLink = document.getElementById("read-more-link");
@@ -415,71 +79,7 @@
             }
         });
     </script> -->
-        <!-- liste article -->
-        </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2023-2024 .</strong>
-    All rights reserved
-  </footer>
+    <!-- liste article -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<!-- <script src="/plugins/jqvmap/jquery.vmap.min.js"></script> -->
-<!-- <script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
-<!-- jQuery Knob Chart -->
-<script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="/plugins/moment/moment.min.js"></script>
-<script src="/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/dist/js/pages/dashboard.js"></script>
-</body>
-</html>
-
+@endsection
 

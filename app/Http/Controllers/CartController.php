@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -12,9 +13,22 @@ class CartController extends Controller
         $carts = Cart::all();
         return view('cart.indexlist', ['carts' => $carts]);
     }
-
-    public function create()
+    public function calculateSubtotalForOrders(array $orderIds)
     {
+        $orders = Order::whereIn('id', $orderIds)->get();
+    
+        $subtotal = 0;
+    
+        foreach ($orders as $order) {
+            $subtotal += $order->total_price;
+        }
+    
+        return $subtotal;
+    }
+    public function create()
+    {   
+       
+
         return view('cart.create');
     }
 
@@ -23,9 +37,9 @@ public function store(Request $request)
 {
      $request->validate([
         "user_id" => "required|numeric|min:0",
-        "items" => "required",
+        "orders" => "required",
         "Delivery_address" =>"required",
-        "discounts" => "required|numeric|min:0",
+     
         "subtotal" => "required|numeric|min:0",
         "payment_method" => "required",
      ]);
@@ -53,9 +67,9 @@ public function update(Request $request, Cart $cart)
 {
     $request->validate([
         "user_id" => "required|numeric|min:0",
-        "items" => "required",
+        "orders" => "required",
        "Delivery_address" =>"required",
-        "discounts" => "required|numeric|min:0",
+       
         "subtotal" => "required|numeric|min:0",
         "payment_method" => "required",
      ]);
@@ -75,5 +89,18 @@ $cart->delete();
 
 // Redirect to index with success message
 return redirect()->route('Cart.indexlist')->with('success', 'Cart deleted successfully');
+
 }
+public function show($cartId)
+{
+    $cart = Cart::find($cartId);
+    $subtotal = $cart->calculateSubtotal(); // Assuming the calculateSubtotal() method exists in your Cart model
+
+    return view('Cart.create', compact('cart', 'subtotal'));
+}
+
+
+
+
+
 }

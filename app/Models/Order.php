@@ -16,15 +16,5 @@ class Order extends Model
         'delivery_address',
         'total_price',
         'coupon_id',
-        
     ];
-
-public function coupon()
-{
-    return $this->belongsTo(Coupon::class);
-}
-public function product()
-{
-    return $this->belongsTo(Product::class, 'product_id');
-}
 }
