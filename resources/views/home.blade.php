@@ -186,7 +186,8 @@
 
 		</section><!--/.header-->	
 		<!--header end-->
-		
+
+
 		<!--menu start-->
 		<section id="menu">
 			<div class="container">
@@ -201,9 +202,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-
 							<a class="navbar-brand" href="/admin">
-
 								<img src="assets/images/logo/logo.png" alt="logo">
 							</a>
 						</div><!--/.navbar-header -->
@@ -211,18 +210,17 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
-
 								<li class="nav-item d-none d-sm-inline-block">
 									<a href="/">Home</a>
 								</li>
-								<li class="nav-item d-none d-sm-inline-block"><a href="/articlelist">Article</a></li>
-								<li ><a  href="{{ route('participations.create') }}">Participer</a></li>
+								<li class="smooth-menu"><a href="#about">About</a></li>
+								<li class="smooth-menu"><a href="#service">Service</a></li>
 								<li class="smooth-menu"><a href="#project">Project</a></li>
 								<li class="smooth-menu"><a href="#team">Team</a></li>
 								<li class="smooth-menu"><a href="#blog">Blog</a></li>
 								<li class="smooth-menu"><a href="#contact">Contact</a></li>
 								<li>
-									<a href="/Cart">
+									<a href="#">
 										<span class="lnr lnr-cart"></span>
 									</a>
 								</li>
@@ -242,6 +240,10 @@
 
 		</section><!--/#menu-->
 		<!--menu end-->
+
+
+
+		
 		
 		<!-- header-slider-area start -->
 		<section class="header-slider-area">

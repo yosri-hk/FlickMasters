@@ -44,13 +44,13 @@
                 <img src="{{ asset('storage/images/' . $article->image) }}" alt="Article Image" id="article-image">
                 @endif
                 <div class="article-content">
-                    <h2 class="article-title">{{ $article->titre }}</h2>
+                    <h2 class="article-title">Titre: {{ $article->titre }}</h2>
                     <div class="article-container">
                     <p class="article-description">
-                    {{substr($article->contenu, 0, 5)}} 
+                    Contenu: {{substr($article->contenu, 0, 5)}} 
                     </p>
                     <p class="article-description-full">
-                    {{$article->contenu}}
+                    Contenu: {{$article->contenu}}
                     </p>
                     <a href="#" class="read-more-link">Voir plus</a>
                     <a href="#" class="read-less-link" style="display: none;">Voir moins</a>
