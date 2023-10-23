@@ -16,6 +16,10 @@ class Product extends Model
         "weight",
         "image_url",
     ];
+    public function categorieProduct()
+{
+    return $this->belongsTo(CategorieProduct::class, 'category_id'); 
+}
 
 
 }

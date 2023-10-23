@@ -300,6 +300,7 @@
         </li>
     </ul>
 </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -367,16 +368,15 @@
     </div>
     <!-- /.content-header -->
 
-
     <section class="content">
     <div class="container-fluid">
-        <!-- Product listing -->
+        <!-- CategorieProduct listing -->
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <h1 class="text-center">Liste de Produits</h1>
+                <h1 class="text-center">Liste de Catégories de Produits</h1>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <a href="{{ route('products.create') }}" class="btn btn-info">Ajouter un produit</a>
+                    <a href="{{ route('categorieProducts.create') }}" class="btn btn-info">Ajouter une catégorie de produits</a>
                 </div>
                 <hr>
                 @if (session("status"))
@@ -387,28 +387,20 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="text-center">Nom du produit</th>
+                            <th class="text-center">Nom de la catégorie</th>
                             <th class="text-center">Description</th>
-                            <th class="text-center">Prix</th>
-                            <th class="text-center">Quantité</th>
-                            <th class="text-center">Poids</th>
-                            <th class="text-center">Catégorie</th> <!-- Add this column -->
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($products as $product)
-                        <tr class="product-row">
-                            <td class="text-center">{{ $product->name }}</td>
-                            <td class="text-center">{{ $product->description }}</td>
-                            <td class="text-center">{{ $product->price }}</td>
-                            <td class="text-center">{{ $product->quantity }}</td>
-                            <td class="text-center">{{ $product->weight }}</td>
-                            <td class="text-center">{{ $product->categorieProduct->name ?? 'N/A' }}</td>
+                        @foreach($categorieProducts as $categorieProduct)
+                        <tr class="categorie-product-row">
+                            <td class="text-center">{{ $categorieProduct->name }}</td>
+                            <td class="text-center">{{ $categorieProduct->description }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-primary" style="margin-right: 5px">Modifier</a>
-                                    <form method="post" action="{{ route('products.delete', ['product' => $product]) }}">
+                                    <a href="{{ route('categorieProducts.edit', ['categorieProduct' => $categorieProduct]) }}" class="btn btn-primary" style="margin-right: 5px">Modifier</a>
+                                    <form method="post" action="{{ route('categorieProducts.delete', ['categorieProduct' => $categorieProduct]) }}">
                                         @csrf
                                         @method("delete")
                                         <input type="submit" value="Supprimer" class="btn btn-danger">
@@ -425,22 +417,8 @@
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        const articleMore = document.getElementById("article-more");
-        const readMoreLink = document.getElementById("read-more-link");
-
-        readMoreLink.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (articleMore.style.display === "none") {
-                articleMore.style.display = "inline";
-                readMoreLink.textContent = "Voir moins";
-            } else {
-                articleMore.style.display = "none";
-                readMoreLink.textContent = "Voir plus";
-            }
-        });
-    </script>
-        <!-- liste article -->
+            </div>
+            <!-- ajouter article -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
@@ -481,7 +459,7 @@
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="/plugins/chart.js/Chart.min.js"></script>
+<!-- <script src="/plugins/chart.js/Chart.min.js"></script> -->
 <!-- Sparkline -->
 <script src="/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
@@ -506,5 +484,3 @@
 <script src="/dist/js/pages/dashboard.js"></script>
 </body>
 </html>
-
-
