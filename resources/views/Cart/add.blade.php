@@ -222,82 +222,126 @@
 		</section><!--/#menu-->
 		<!--menu end-->
 		
-        <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-9">
-            <h1 class="text-center">Cart</h1>
-              <div class="col-md-9">
-            <div class="d-flex justify-content-end">
-                    <a  href="/carts/create1" class="btn btn-info">Add Cart</a>
+        <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <!-- ajouter article -->
+            <div id="ajouterContent">
+            <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <h1 class="text-center">Add to carts</h1>
+                <hr>
+                @if (session("status"))
+                <div class="alert alert-success">
+                  {{session("status")}}
                 </div>
-            <form method="GET" action="{{ route('search') }}" class="form-inline">
-                <div class="form-group">
-                    
-                    <label for="address" class="mr-2">Select an address :</label>
-                    <select name="address" class="form-control">
-                        <option value="">All addresses</option>
-                        @foreach ($addresses as $adresss)
-                            <option value="{{ $adresss->id }}">{{ $adresss->Deliveryaddresse }}, {{ $adresss->City }}, {{ $adresss->Postal_code }}</option>
-                        @endforeach
-                    </select>
-                    
-                </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-        </div>
-      
-    </div>
+                @endif
 
-    <hr>
-    
-    @if (session("status"))
-    <div class="alert alert-success">
-        {{ session("status") }}
-    </div>
-    @endif
-    
-    <table class="table custom-table">
-        <thead>
-            <tr>
-                <th class="text-center">User ID</th>
-                <th class="text-center">Orders</th>
-                <th class="text-center">Delivery Address</th>
-                <th class="text-center">Subtotals</th>
-                <th class="text-center">Payment Method</th>
-                <th class="text-center">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($carts as $cart)
-                <tr class="article-row">
-                    
-                    <td class="text-center">{{ $cart->user_id }}</td>
-                    <td class="text-center">
-                        <pre>{{ json_encode($cart->orders, JSON_PRETTY_PRINT) }}</pre>
-                    </td>
-                    <td class="text-center">{{ $cart->Delivery_address }}</td>
-                    <td class="text-center">{{ $cart->subtotal }}</td>
-                    <td class="text-center">{{ $cart->payment_method }}</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <a href="{{ route('Cart.edit', $cart->id) }}" class="btn btn-primary ">Edit</a>
-                            <form method="POST" action="{{ route('cart.delete', $cart->id) }}" style="display: inline; margin-left: 10px;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this order?')">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
+
+                <div>
+        @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
             @endforeach
-        </tbody>
-    </table>
+               </ul>
+               @endif
+               </div>
+             
+    @section('content')
+<div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
+<form action="{{ isset($cart) ? route('Cart.create', $cart->id) : route('Cart.store') }}" method="POST">
+    @csrf
+    @if(isset($cart))
+        @method('PUT') <!-- For editing an existing product -->
+    @endif
+    <div class="mb-3">
+        <label for="user_id" class="form-label">User_id</label>
+        <input type="text" class="form-control" id="user_id" name="user_id" required value="{{ isset($cart) ? $cart->user_id : '' }}">
+    </div>
+    <br></br>
+    <?php
+// Exemple de récupération des commandes depuis une source de données
+$allOrders = App\Models\Order::all();
+?>
+
+<div class="mb-3">
+    <label for="orders" class="form-label">Orders</label>
+    <select class="form-select" id="orders" name="orders[]" multiple>
+        <?php foreach ($allOrders as $order): ?>
+            <option value="<?php echo $order->id; ?>">
+                Order ID: <?php echo $order->id; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+<br></br>
+
+
+<div class="mb-3">
+    <label for="Delivery_address" class="form-label">Delivery Address</label>
+    <select class="form-select" id="Delivery_address" name="Delivery_address">
+        <option value="">Select an address</option>
+        <?php
+        // Récupérer toutes les adresses depuis la base de données
+        $addresses = App\Models\Adresse::all();
+        
+        // Itérer à travers les adresses
+        foreach ($addresses as $address) {
+            // Concaténer les attributs pour former l'adresse
+            $fullAddress = $address->Deliveryaddresse . ', ' . $address->City . ', ' . $address->Postal_code;
+            ?>
+            <option value="<?php echo $address->id; ?>"><?php echo $fullAddress; ?></option>
+            <?php
+        }
+        ?>
+    </select>
+</div>
+
+
+   
+<div class="mb-3">
+    <label for="subtotal" class="form-label">Subtotal</label>
+    <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ isset($cart) ? $cart->calculateSubtotalForOrders() : 567}}" hidden>
 </div>
 
 
 
 
 
+
+
+
+
+
+    <div class="mb-3">
+    <label class="form-label">Payment Method</label>
+
+    <?php
+    // Récupérer la valeur actuelle de payment_method
+    $currentPaymentMethod = isset($cart) ? $cart->payment_method : '';
+
+    // Définir les options possibles pour le bouton radio
+    $paymentMethods = ['credit_card', 'paypal', 'bank_transfer'];
+    ?>
+
+    <?php foreach ($paymentMethods as $method): ?>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment_method" id="payment_method_<?= $method ?>" value="<?= $method ?>" <?= ($currentPaymentMethod === $method) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="payment_method_<?= $method ?>">
+                <?= ucfirst(str_replace('_', ' ', $method)) ?>
+            </label>
+        </div>
+    <?php endforeach; ?>
+</div>
+    <button type="submit" class="btn btn-primary">{{ isset($cart) ? 'Update' : 'Add' }} Cart</button>
+    <a class="btn btn-warning" href="/carts/show">Return to the list of carts</a>
+</form>
+</div>
+
+               </div>
 
 
 					

@@ -197,7 +197,7 @@
 								<li ><a  href="{{ route('participations.create') }}">Participer</a></li>
 								<li class="smooth-menu"><a href="#contact">Contact</a></li>
 								<li>
-									<a href="/Cart">
+									<a href="{{ route('Cart.show') }}">
 										<span class="lnr lnr-cart"></span>
 									</a>
 								</li>

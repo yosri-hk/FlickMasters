@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 use App\Models\Adresse;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class AdressetController extends Controller
 {
-    public function index()
-    {
-        $adresss = Adresse::all();
+     public function index()
+     {
+         $adresss = Adresse::all();
         return view('Address.indexlist', ['adresss' => $adresss]);
-    }
+     }
+    // public function showCarts() {
+    //     $carts = Cart::all(); // Remplacez Cart::all() par votre requête pour obtenir les paniers
+    
+    //     $adresss = Adresse::all(); // Récupérez la liste des adresses depuis votre modèle Address
+    
+    //     return view('Cart.show', compact('carts', 'adresss'));
+    // }
+    
+
     public function create()
     {
         return view('Address.create');
@@ -26,11 +36,11 @@ class AdressetController extends Controller
     Adresse::create($request->all());
     return redirect()->route('Address.indexlist')->with('success', 'Address created successfully');
 }
-public function edit(Adresse $adresse)
+public function edit(Adresse $adresss)
 {
-return view('Address.edit', ['adresse' => $adresse]);
+return view('Address.edit', ['adresse' => $adresss]);
 }
-public function update(Request $request, Adresse $adresse)
+public function update(Request $request, Adresse $adresss)
 {
     
     $request->validate([
@@ -39,12 +49,31 @@ public function update(Request $request, Adresse $adresse)
         "Postal_code" => "required|numeric|min:1000",
        
      ]);
-     $adresse->update($request->all());
+     $adresss->update($request->all());
     return redirect()->route('Address.indexlist')->with('success', 'Address updated successfully');
 
 }
-public function destroy(Adresse $adresse)
-{$adresse->delete();
+public function destroy(Adresse $adresss)
+{$adresss->delete();
     return redirect()->route('Address.indexlist')->with('success', 'Address deleted successfully');
 }
+// public function search(Request $request)
+// {
+//     $selectedAddressId = $request->input('address');
+
+//     // Récupérez la liste de toutes les adresses pour la liste déroulante.
+//     $adresss = Adresse::all(); // Remplacez Adresse par le nom de votre modèle d'adresse
+
+//     // Si une adresse est sélectionnée, effectuez la recherche en fonction de son ID.
+//     if (!empty($selectedAddressId)) {
+//         $results = Adresse::where('id', $selectedAddressId)->get();
+//     } else {
+//         // Sinon, renvoyez tous les résultats.
+//         $results = Adresse::all();
+//     }
+
+//     return view('Cart.show', compact('results', 'adresss', 'selectedAddressId'));
+// }
+
+
 }

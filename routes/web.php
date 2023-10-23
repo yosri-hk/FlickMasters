@@ -103,11 +103,15 @@ Route::resource('promotions', PromotionController::class);
 Route::get('/carts',[CartController::class,"index"])->name('Cart.indexlist');
 
 Route::get('/carts/create',[CartController::class,"create"])->name('Cart.create');
+Route::get('/carts/create1',[CartController::class,"create1"])->name('Cart.add');
 Route::post('/carts',[CartController::class,"store"])->name('Cart.store');
 
 Route::get('/carts/{cart}/edit',[CartController::class,"edit"])->name('Cart.edit');
 Route::put('/carts/{cart}',[CartController::class,"update"])->name('Cart.update');
+Route::get('/search', [CartController::class,"search"])->name('search');
 
+Route::get('/carts/show', [CartController::class, 'show'])->name('Cart.show');
+//Route::get('/cart/{cart}', [CartController::class, 'show'])->name('cart.show');
 
 Route::delete('/carts/{cart}',[CartController::class,'destroy'])->name('cart.delete');
 ////////////////////////////

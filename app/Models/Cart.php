@@ -20,10 +20,14 @@ protected $fillable = [
 protected $casts = [
     'orders' => 'json',
 ];
-public function adresses()
-{
-    return $this->hasMany(Adresse::class);
-}
+// public function adresses()
+// {
+//     return $this->hasMany(Adresse::class);
+// }
+public function addresses()
+    {
+        return $this->hasMany(Adresse::class, 'cart_id');
+    }
 public function orders()
 {
     return $this->hasMany(Order::class);
