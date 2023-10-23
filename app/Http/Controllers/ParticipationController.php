@@ -32,7 +32,7 @@ class ParticipationController extends Controller
 
         Participation::create($request->all());
 
-        return redirect()->route('home');
+        return redirect()->route('/');
 
     }
 

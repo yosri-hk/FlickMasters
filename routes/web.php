@@ -173,10 +173,10 @@ Route::resource('stands', StandController::class);
 // Route configuration for Event entity
 Route::resource('events', EventController::class);
 // Route configuration for Participation entity
-//Route::resource('participations', ParticipationController::class);
+Route::resource('participations', ParticipationController::class);
 //Route::resource('participations', ParticipationController::class)->only(['create', 'store']);
-Route::post('/participations', [ParticipationController::class, "store"])->name('participations.store');
-Route::get('/participations/create', [ParticipationController::class, 'create'])->name('participations.create');
+/* Route::post('/participations/store', [ParticipationController::class, "store"])->name('participations.store');
+Route::get('/participations/create', [ParticipationController::class, 'create'])->name('participations.create'); */
 
 
 
