@@ -17,7 +17,7 @@ use App\Http\Controllers\StandController;
 use App\Http\Controllers\ParticipationController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\FrontCartController;
-
+use App\Http\Controllers\CategorieProductController;
 
 
 
@@ -101,6 +101,16 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
 Route::delete('/products/{product}', [ProductController::class, 'delete'])->name('products.delete');
+
+// categorieProducts 
+
+Route::get('/categorieProducts', [CategorieProductController::class, 'index'])->name('categorieProducts.index');
+Route::get('/categorieProducts/create', [CategorieProductController::class, 'create'])->name('categorieProducts.create');
+Route::post('/categorieProducts', [CategorieProductController::class, 'store'])->name('categorieProducts.store');
+Route::get('/categorieProducts/{categorieProduct}/edit', [CategorieProductController::class, 'edit'])->name('categorieProducts.edit');
+Route::put('/categorieProducts/{categorieProduct}', [CategorieProductController::class, 'update'])->name('categorieProducts.update');
+Route::delete('/categorieProducts/{categorieProduct}', [CategorieProductController::class, 'delete'])->name('categorieProducts.delete');
+
 //Users
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
