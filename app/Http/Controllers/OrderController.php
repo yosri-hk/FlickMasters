@@ -39,7 +39,7 @@ return view('orders.index', compact('orders', 'current_page'));
 
     if (!$product) {
         // Handle the case where the product is not found
-        return redirect()->back()->with('error', 'Invalid product ID. Please try again.');
+        return redirect()->back()->with('error', 'order already passed');
     }
     $quantity = $request->input('quantity');
 
@@ -78,7 +78,7 @@ return view('orders.index', compact('orders', 'current_page'));
     // Create the order with or without a coupon
     Order::create($orderData);
 
-    return redirect()->route('orders.index')->with('success', 'Order created successfully');
+    return redirect()->route('orders.create')->with('success', 'Order created successfully');
 }
     /**
      * Display the specified resource.
