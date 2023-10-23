@@ -45,8 +45,9 @@ public function store(Request $request)
 
     public function edit($id)
     {
+        $events = Event::all();
         $stand = Stand::findOrFail($id);
-        return view('stands.edit', compact('stand'));
+        return view('stands.edit', compact('stand','events'));
     }
 
     public function update(Request $request, $id)
