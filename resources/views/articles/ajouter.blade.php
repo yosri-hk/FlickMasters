@@ -1,6 +1,7 @@
 @extends('articles.layout')
 @section('content')
 
+
   <!-- ajouter article -->
   <div id="ajouterContent">
     <div class="container">

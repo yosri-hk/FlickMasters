@@ -21,15 +21,18 @@
         <title>FlickMasters</title>
 
         <!-- for title img -->
+
 		<link rel="shortcut icon" type="image/icon" href="assets/images/logo/favicon.png"/>
        
         <!--font-awesome.min.css-->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
 		
 		<!--linear icon css-->
 		<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 		
 		<!--animate.css-->
+
         <link rel="stylesheet" href="assets/css/animate.css">
 		
 		<!--hover.css-->
@@ -54,6 +57,7 @@
         
         <!--responsive.css-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,11 +75,13 @@
         <![endif]-->
 
 		
+
 		@if (session('status'))
           <div class="alert alert-success">
                {{ session('status') }}
           </div>
            @endif
+
 		
 		<!--header start-->
 		<section id="home"  class="header">
@@ -84,11 +90,13 @@
 					<ul class="pull-left">
 						<li>
 							<a href="#">
+
 								<i class="fa fa-phone" aria-hidden="true"></i> +992 563 542
 							</a>
 						</li><!--/li-->
 						<li>
 							<a href="#">
+
 								<i class="fa fa-envelope" aria-hidden="true"></i>info@mail.com
 							</a>
 						</li><!--/li-->
@@ -97,6 +105,7 @@
 				<div class="header-right pull-right">
 					<ul>
 						<li class="reg">
+
 							<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
 								Register
 							</a>
@@ -118,6 +127,7 @@
 											<h4 class="modal-title" id="mySmallModalLabel">
 												Sign In
 											</h4> 
+
 											<form class="sm-frm" style="padding:25px" method="POST" action="{{ route('login') }}">
 											    @csrf
 												<label>Email :</label>
@@ -142,6 +152,7 @@
 											 	</span>
 											</button>  
 											<h4 class="modal-title" id="myLargeModalLabel">Register</h4> 
+
 											<form class="lg-frm" style="padding:25px" action="{{ route('register') }}" method="POST">
 
 											    @csrf
@@ -152,6 +163,7 @@
 												<label>Passoward :</label>
 												<input type="password" class="form-control" placeholder="Enter Passoward" name="password">
 												<button type="submit" class="btn btn-default pull-right">Submit</button>
+
 											</form>
 										</div>
 									</div>
@@ -189,7 +201,9 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
+
 							<a class="navbar-brand" href="/admin">
+
 								<img src="assets/images/logo/logo.png" alt="logo">
 							</a>
 						</div><!--/.navbar-header -->
@@ -197,17 +211,18 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
+
 								<li class="nav-item d-none d-sm-inline-block">
 									<a href="/">Home</a>
 								</li>
 								<li class="nav-item d-none d-sm-inline-block"><a href="/articlelist">Article</a></li>
-								<li class="smooth-menu"><a href="#service">Service</a></li>
+								<li ><a  href="{{ route('participations.create') }}">Participer</a></li>
 								<li class="smooth-menu"><a href="#project">Project</a></li>
 								<li class="smooth-menu"><a href="#team">Team</a></li>
 								<li class="smooth-menu"><a href="#blog">Blog</a></li>
 								<li class="smooth-menu"><a href="#contact">Contact</a></li>
 								<li>
-									<a href="#">
+									<a href="/Cart">
 										<span class="lnr lnr-cart"></span>
 									</a>
 								</li>
@@ -320,7 +335,9 @@
 									<div class="we-do-description">
 										<div class="we-do-info">
 											<div class="we-do-img">
+
 												<img src="assets/images/home/consultency.png" alt="image of consultency" />
+
 											</div><!--/.we-do-img-->
 											<div class="we-do-topics">
 												<h2>
@@ -343,7 +360,9 @@
 									<div class="we-do-description">
 										<div class="we-do-info">
 											<div class="we-do-img">
+
 												<img src="assets/images/home/busisness_grow.png" alt="image of business" />
+
 											</div><!--/.we-do-img-->
 											<div class="we-do-topics">
 												<h2>
@@ -366,7 +385,9 @@
 									<div class="we-do-description">
 										<div class="we-do-info">
 											<div class="we-do-img">
+
 												<img src="assets/images/home/support-logo.png" alt="image of support" />
+
 											</div><!--/.we-do-img-->
 											<div class="we-do-topics">
 												<h2>
@@ -415,7 +436,9 @@
 						<div class="col-sm-6">
 							<div class="single-about-us">
 								<div class="about-us-img">
+
 									<img src="assets/images/about/about-part.jpg" alt="about images">
+
 								</div><!--/.about-us-img-->
 							</div><!--/.single-about-us-->
 						</div><!--/.col-->
@@ -441,7 +464,9 @@
 								<div class="col-sm-4 col-xs-12">
 									<div class="service-single text-center">
 										<div class="service-img">
+
 											<img src="assets/images/service/service1.png" alt="image of service" />
+
 										</div><!--/.service-img-->
 										<div class="service-txt">
 											<h2>
@@ -459,7 +484,9 @@
 								<div class="col-sm-4 col-xs-12">
 									<div class="service-single text-center">
 										<div class="service-img">
+
 											<img src="assets/images/service/service2.png" alt="image of service" />
+
 										</div><!--/.service-img-->
 										<div class="service-txt">
 											<h2>
@@ -477,7 +504,9 @@
 								<div class="col-sm-4 col-xs-12">
 									<div class="service-single text-center">
 										<div class="service-img">
+
 											<img src="assets/images/service/service3.png" alt="image of service" />
+
 										</div><!--/.service-img-->
 										<div class="service-txt">
 											<h2>
@@ -499,7 +528,9 @@
 								<div class="col-sm-4 col-xs-12">
 									<div class="service-single text-center">
 										<div class="service-img">
+
 											<img src="assets/images/service/service4.png" alt="image of service" />
+
 										</div><!--/.service-img-->
 										<div class="service-txt">
 											<h2>
@@ -517,7 +548,9 @@
 								<div class="col-sm-4 col-xs-12">
 									<div class="service-single text-center">
 										<div class="service-img">
+
 											<img src="assets/images/service/service5.png" alt="image of service" />
+
 										</div><!--/.service-img-->
 										<div class="service-txt">
 											<h2>
@@ -535,7 +568,9 @@
 								<div class="col-sm-4 col-xs-12">
 									<div class="service-single text-center">
 										<div class="service-img">
+
 											<img src="assets/images/service/service6.png" alt="image of service" />
+
 										</div><!--/.service-img-->
 										<div class="service-txt">
 											<h2>
@@ -565,7 +600,9 @@
 					<div class="col-md-3 col-sm-6">
 						<div class="single-ststistics-box">
 							<div class="statistics-img">
+
 								<img src="assets/images/counter/counter1.png" alt="counter-icon" />
+
 							</div><!--/.statistics-img-->
 							<div class="statistics-content">
 								<div class="counter">2556</div>
@@ -576,7 +613,9 @@
 					<div class="col-md-3 col-sm-6">
 						<div class="single-ststistics-box">
 							<div class="statistics-img">
+
 								<img src="assets/images/counter/counter2.png" alt="counter-icon" />
+
 							</div><!--/.statistics-img-->
 							<div class="statistics-content">
 								<div class="counter">326</div>
@@ -587,7 +626,9 @@
 					<div class="col-md-3 col-sm-6">
 						<div class="single-ststistics-box">
 							<div class="statistics-img">
+
 								<img src="assets/images/counter/counter3.png" alt="counter-icon" />
+
 							</div><!--/.statistics-img-->
 							<div class="statistics-content">
 								<div class="counter">1526</div>
@@ -598,7 +639,9 @@
 					<div class="col-md-3 col-sm-6">
 						<div class="single-ststistics-box">
 							<div class="statistics-img">
+
 								<img src="assets/images/counter/counter4.png" alt="counter-icon" />
+
 							</div><!--/.statistics-img-->
 							<div class="statistics-content">
 								<div class="counter">856</div>
@@ -628,7 +671,9 @@
 								<div class="row">
 									<div class=" col-md-4 col-sm-12">
 										<div class="item big-height">
+
 											<img src="assets/images/project/project1.jpg" alt="portfolio image"/>
+
 											<div class="isotope-overlay">
 												<a href="project.html">
 													<span class="lnr lnr-link"></span>
@@ -647,7 +692,9 @@
 										<div class="row">
 											<div class="col-sm-6 col-xs-12">
 												<div class="item">
+
 													<img src="assets/images/project/project2.jpg" alt="portfolio image"/>
+
 													<div class="isotope-overlay">
 														<a href="project.html">
 															<span class="lnr lnr-link"></span>
@@ -664,7 +711,9 @@
 											</div><!-- /.col -->
 											<div class="col-sm-6 col-xs-12">
 												<div class="item">
+
 													<img src="assets/images/project/project3.jpg" alt="portfolio image"/>
+
 													<div class="isotope-overlay">
 														<a href="project.html">
 															<span class="lnr lnr-link"></span>
@@ -683,7 +732,9 @@
 										<div class="row">
 											<div class="col-sm-6 col-xs-12">
 												<div class="item">
+
 													<img src="assets/images/project/project4.jpg" alt="portfolio image"/>
+
 													<div class="isotope-overlay">
 														<a href="project.html">
 															<span class="lnr lnr-link"></span>
@@ -701,7 +752,9 @@
 											</div><!-- /.col -->
 											<div class="col-sm-6 col-xs-12">
 												<div class="item">
+
 													<img src="assets/images/project/project5.jpg" alt="portfolio image"/>
+
 													<div class="isotope-overlay">
 														<a href="project.html">
 															<span class="lnr lnr-link"></span>
@@ -937,7 +990,9 @@
 					<div class="home1-testm item">
 						<div class="home1-testm-single text-center">
 							<div class="home1-testm-img">
+
 								<img src="assets/images/client/testimonial1.jpg" alt="img"/>
+
 							</div><!--/.home1-testm-img-->
 							<div class="home1-testm-txt">
 								<span class="icon section-icon">
@@ -958,7 +1013,9 @@
 					<div class="home1-testm item">
 						<div class="home1-testm-single text-center">
 							<div class="home1-testm-img">
+
 								<img src="assets/images/client/testimonial2.jpg" alt="img"/>
+
 							</div><!--/.home1-testm-img-->
 							<div class="home1-testm-txt">
 								<span class="icon section-icon">
@@ -979,7 +1036,9 @@
 					<div class="home1-testm item">
 						<div class="home1-testm-single text-center">
 							<div class="home1-testm-img">
+
 								<img src="assets/images/client/testimonial1.jpg" alt="img"/>
+
 							</div><!--/.home1-testm-img-->
 							<div class="home1-testm-txt">
 								<span class="icon section-icon">
@@ -1010,17 +1069,23 @@
 					<div class="owl-carousel owl-theme" id="client">
 						<div class="item">
 							<a href="#">
+
 								<img src="assets/images/client/client1.png" alt="brand-image" />
+
 							</a>
 						</div><!--/.item-->
 						<div class="item">
 							<a href="#">
+
 								<img src="assets/images/client/client2.png" alt="brand-image" />
+
 							</a>
 						</div><!--/.item-->
 						<div class="item">
 							<a href="#">
+
 								<img src="assets/images/client/client3.png" alt="brand-image" />
+
 							</a>
 						</div><!--/.item-->
 						<div class="item">
@@ -1030,7 +1095,9 @@
 						</div><!--/.item-->
 						<div class="item">
 							<a href="#">
+
 								<img src="assets/images/client/client5.png" alt="brand-image" />
+
 							</a>
 						</div><!--/.item-->
 					</div><!--/.owl-carousel-->
@@ -1055,7 +1122,9 @@
 								<div class="col-md-4 col-sm-6">
 									<div class="single-news-box">
 										<div class="news-box-bg">
+
 											<img src="assets/images/blog/bl1.jpg" alt="blog image">
+
 											<div class="isotope-overlay">
 												<a href="blog_single.html">
 													<span class="lnr lnr-link"></span>
@@ -1082,7 +1151,9 @@
 								<div class="col-md-4 col-sm-6">
 									<div class="single-news-box">
 										<div class="news-box-bg">
+
 											<img src="assets/images/blog/bl2.jpg" alt="blog image">
+
 											<div class="isotope-overlay">
 												<a href="blog_single.html">
 													<span class="lnr lnr-link"></span>
@@ -1109,7 +1180,9 @@
 								<div class="col-md-4 col-sm-6">
 									<div class="single-news-box">
 										<div class="news-box-bg">
+
 											<img src="assets/images/blog/bl3.jpg" alt="blog image">
+
 											<div class="isotope-overlay">
 												<a href="blog_single.html">
 													<span class="lnr lnr-link"></span>
@@ -1285,7 +1358,9 @@
 								<div class="hm-foot-title ">
 									<div class="logo">
 										<a href="index.html">
+
 											<img src="assets/images/logo/logo.png" alt="logo" />
+
 										</a>
 									</div><!-- /.logo-->
 								</div><!--/.hm-foot-title-->
@@ -1405,7 +1480,9 @@
 
 		<!-- jaquery link -->
 
+
 		<script src="assets/js/jquery.js"></script>
+
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         
         <!--modernizr.min.js-->
@@ -1413,6 +1490,7 @@
 		
 		
 		<!--bootstrap.min.js-->
+
         <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 		
 		<!-- bootsnav js -->
@@ -1426,6 +1504,7 @@
 		<script src="assets/js/jquery.magnific-popup.min.js"></script>
 
 
+
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
 		<!-- isotope js -->
@@ -1433,6 +1512,7 @@
 		<script src="assets/js/isotop-custom.js"></script> -->
 
         <!--owl.carousel.js-->
+
         <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
 		
 		<!-- counter js -->
@@ -1442,6 +1522,7 @@
         <!--Custom JS-->
         <script type="text/javascript" src="assets/js/jak-menusearch.js"></script>
         <script type="text/javascript" src="assets/js/custom.js"></script>
+
 		
 
     </body>
