@@ -105,7 +105,7 @@
 									<a href="/">Home</a>
 								</li>
 								<li class="nav-item d-none d-sm-inline-block"><a href="/articlelist">Article</a></li>
-								<li class="smooth-menu"><a href="#service">Service</a></li>
+								<li ><a  href="{{ route('participations.create') }}">Participer</a></li>
 								<li class="smooth-menu"><a href="#project">Project</a></li>
 								<li class="smooth-menu"><a href="#team">Team</a></li>
 								<li class="smooth-menu"><a href="#blog">Blog</a></li>
@@ -113,6 +113,11 @@
 								<li>
 									<a href="/">
                                        <i class="fas fa-sign-out-alt custom-icon"></i>
+									</a>
+								</li>
+								<li>
+									<a href="/Cart">
+										<span class="lnr lnr-cart"></span>
 									</a>
 								</li>
 								<li class="search">

@@ -31,9 +31,9 @@
                                         <svg aria-hidden="true" fill="none" focusable="false" height="20" viewBox="0 0 20 20" width="20" id="cds-react-aria-30" class="css-0"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.793 9.5L9.646 2.354l.708-.708L18.707 10l-8.353 8.354-.708-.707 7.147-7.147H2v-1h14.793z" fill="currentColor"></path></svg>
                                     </a>
                                 </div>
-                                <h5 class="card-text">{{ $article->titre }}</h5>
-                                <p class="card-text">{{ $article->contenu }}</p>
-                                <p class="card-text"><small class="text-muted">{{ $article->datePublication }}</small></p>
+                                <h5 class="card-text">Titre: {{ $article->titre }}</h5>
+                                <p class="card-text">Contenu: {{ $article->contenu }}</p>
+                                <p class="card-text"><small class="text-muted">datePublication: {{ $article->datePublication }}</small></p>
                                 <p class="card-text"><small class="text-muted">Auteur: {{ $article->auteur }}</small></p>
                             </div>
                             <div class="card-footer">
