@@ -84,9 +84,11 @@
                             <p><small>Poids: {{ $product->weight }}</small></p>
                         </div>
       <div class="product-buttons" style="margin-top: 10px;">
-    <a href="{{ route('products.details', ['id' => $product->id]) }}" class="btn btn-primary" style="margin-right: 20px;">Détails</a>
-    <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-primary" style="margin-right: 20px;">Modifier</a>
-    <a href="{{ route('orders.create', ['id' => $product->id]) }}" class="btn btn-primary" style="margin-right: 20px;">commander</a>
+        <div class="btn-group" role="group">
+            <a href="{{ route('products.details', ['id' => $product->id]) }}" class="btn btn-primary">Détails</a>
+            <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-primary">Modifier</a>
+            <a href="{{ route('orders.create', ['id' => $product->id]) }}" class="btn btn-success">Commander</a>
+        </div>
   <div class="mb-3">
 </br>
     <form method="post" action="{{ route('products.destroy', ['product' => $product]) }}">
