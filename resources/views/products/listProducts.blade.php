@@ -74,7 +74,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="product-card">
                         @if ($product->image_url)
-                            <img src="{{ asset('storage/images/' . $product->image_url) }}" alt="Product Image" class="product-image">
+                            <img src="{{ $product->image_url }}" alt="Product Image" class="product-image">
                         @endif
                         <div style="margin-top: 10px;">
                             <h5>Nom: {{ $product->name }}</h5>
