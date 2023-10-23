@@ -51,10 +51,7 @@
                                 <form method="POST" action="{{ route('orders.store') }}">
                                     @csrf
 
-                                    <div class="form-group">
-                                        <label for="customer_id">Customer ID</label>
-                                        <input type="text" name="customer_id" class="form-control" required>
-                                    </div>
+                                    
 
                                     <div class="form-group">
                                         <label for "product_id">Product ID</label>
@@ -76,10 +73,7 @@
                                       <input type="text" name="delivery_address" class="form-control" required>
                                   </div>
 
-                                  <div class="form-group">
-                                      <label for="total_price">Total Price</label>
-                                      <input type="number" name="total_price" step="0.01" class="form-control" required>
-                                  </div>
+                                  
 
                                   <!-- Include Coupon ID field in the form -->
                                   <div class="form-group">
