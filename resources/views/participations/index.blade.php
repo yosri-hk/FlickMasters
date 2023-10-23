@@ -399,6 +399,7 @@
                           <th class="text-center">Carte d'identité</th>
                           <th class="text-center">Adresse email</th>
                           <th class="text-center">Téléphone</th>
+                          <th class="text-center">Event</th>
                           <th class="text-center">Actions</th>
                         </tr>
                       </thead>
@@ -411,6 +412,8 @@
                           </td>
                           <td class="text-center">{{ $participation->adresse_email }}</td>
                           <td class="text-center">{{ $participation->telephone }}</td>
+                          <td class="text-center">{{ $participation->Event->name }}</td>
+
                           <td class="text-center">
                             <div class="btn-group">
                                 <form method="post" action="{{ route('participations.destroy', ['participation' => $participation]) }}">
