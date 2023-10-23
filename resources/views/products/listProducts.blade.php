@@ -19,9 +19,10 @@
         margin-right: 5px;
     }
 </style>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!doctype html>
+<html class="no-js" lang="en">
+
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FlickMasters</title>
@@ -63,12 +64,77 @@
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="FlickMasters" height="60" width="60">
   </div>
+   <!-- Navbar -->
+   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/admin" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/articles" class="nav-link">Article</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/categories" class="nav-link">Categorie</a>
+      </li>
+    </ul>
+
+          </a>
+        
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
 <div class="container" id="container">
     <h1 class="text-center">Liste de Produits</h1>
     <hr>
     <input type="text" id="product-filter" placeholder="Filter by Product Name" class="form-control" style="margin-bottom: 10px;">
 
-    <div class="row">
+    <div class="row"><select id="category-filter" class="form-control" style="margin-bottom: 10px;">
+    <option value="">All Categories</option>
+    @foreach ($categories as $category)
+        <option value="{{ $category->id }}">{{ $category->name }}</option>
+    @endforeach
+</select>
         @if (count($products) > 0)
             @foreach($products as $product)
                 <div class="col-md-4 mb-4">
@@ -82,6 +148,11 @@
                             <p>Prix: {{ $product->price }}</p>
                             <p>Quantité: {{ $product->quantity }}</p>
                             <p><small>Poids: {{ $product->weight }}</small></p>
+                            @if ($product->category_id)
+    <p><span class="badge bg-warning">Catégorie: {{ $product->categorieProduct->name }}</span></p>
+@endif
+
+
                         </div>
       <div class="product-buttons" style="margin-top: 10px;">
     <a href="{{ route('products.details', ['id' => $product->id]) }}" class="btn btn-primary" style="margin-right: 20px;">Détails</a>
@@ -141,6 +212,79 @@
 <script src="/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/dist/js/pages/dashboard.js"></script>
+<!-- footer-copyright start -->
+<footer class="footer-copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-7">
+						<div class="foot-copyright pull-left">
+							<p>
+								&copy; All Rights Reserve
+							 	<a href="https://www.themesine.com">ThemeSINE</a>
+							</p>
+						</div><!--/.foot-copyright-->
+					</div><!--/.col-->
+					<div class="col-sm-5">
+						<div class="foot-menu pull-right
+						">	  
+							<ul>
+								<li ><a href="#">legal</a></li>
+								<li ><a href="#">sitemap</a></li>
+								<li ><a href="#">privacy policy</a></li>
+							</ul>
+						</div><!-- /.foot-menu-->
+					</div><!--/.col-->
+				</div><!--/.row-->
+				<div id="scroll-Top">
+					<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+				</div><!--/.scroll-Top-->
+			</div><!-- /.container-->
+
+		</footer><!-- /.footer-copyright-->
+		<!-- footer-copyright end -->
+
+
+
+		<!-- jaquery link -->
+
+		<script src="assets/js/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        
+        <!--modernizr.min.js-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		
+		<!--bootstrap.min.js-->
+        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="assets/js/bootsnav.js"></script>
+		
+		<!-- for manu -->
+		<script src="assets/js/jquery.hc-sticky.min.js" type="text/javascript"></script>
+
+		
+		<!-- vedio player js -->
+		<script src="assets/js/jquery.magnific-popup.min.js"></script>
+
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+		<!-- isotope js -->
+		<!-- <script src="assets/js/masonry.min.js"></script>
+		<script src="assets/js/isotop-custom.js"></script> -->
+
+        <!--owl.carousel.js-->
+        <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+		
+		<!-- counter js -->
+		<script src="assets/js/jquery.counterup.min.js"></script>
+		<script src="assets/js/waypoints.min.js"></script>
+		
+        <!--Custom JS-->
+        <script type="text/javascript" src="assets/js/jak-menusearch.js"></script>
+        <script type="text/javascript" src="assets/js/custom.js"></script>
+
 </body>
 </html>
 
@@ -160,6 +304,28 @@ $(document).ready(function () {
     });
 });
 </script>
-
-
-
+<script>
+$(document).ready(function () {
+    $('#product-filter').on('input', filterProducts);
+    $('#category-filter').on('change', filterProducts);
+    
+    function filterProducts() {
+        var nameFilter = $('#product-filter').val().toLowerCase();
+        var categoryFilter = $('#category-filter').val();
+        
+        $('.product-card').each(function () {
+            var productName = $(this).find('h5').text().toLowerCase();
+            var productCategoryId = $(this).data('category_id');
+            
+            if ((nameFilter === '' || productName.includes(nameFilter)) &&
+                (categoryFilter === '' || productCategoryId === categoryFilter)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+    
+    filterProducts(); 
+});
+</script>

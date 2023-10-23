@@ -89,8 +89,9 @@ $product->save();
         return redirect(route('products.index'))->with('success', "Product deleted successfully");
     }
     public function listProducts() {
-        $products = Product::with('categorieProduct')->get();     
-           return view("products.listProducts", ['products' => $products]);
+        $products = Product::with('categorieProduct')->get();    
+        $categories = CategorieProduct::all();  
+        return view("products.listProducts", compact('products', 'categories'));
     }
     public function destroy(Product $product) {
         $product->delete();
