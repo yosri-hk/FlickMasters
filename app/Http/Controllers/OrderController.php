@@ -55,6 +55,9 @@ return view('orders.index', compact('orders', 'current_page'));
         'delivery_address' => $request->input('delivery_address'),
         
     ];
+    $totalPrice = $product->price * $quantity;
+
+    
    
     
     if ($couponCode) {
@@ -67,9 +70,10 @@ return view('orders.index', compact('orders', 'current_page'));
         } else {
             // If a valid coupon was found, add the coupon_id to the order data
             $orderData['coupon_id'] = $coupon->id;
+            $totalPrice =$totalPrice - $coupon->discount_amount;
         }
     }
-    $totalPrice = $product->price * $quantity - $coupon->discount_amount;
+    
     $orderData['total_price'] = $totalPrice;
     // Create the order with or without a coupon
     Order::create($orderData);
