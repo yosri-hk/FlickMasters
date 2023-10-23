@@ -17,6 +17,7 @@
             </div>
             @endif
             <div class="row">
+              @if (count($articles) > 0)
                 @foreach($articles as $article)
                     <div class="col-md-4 mb-4">
                         <div class="card">
@@ -24,7 +25,13 @@
                             <img src="{{ asset('storage/images/' . $article->image) }}" alt="Article Image" width="100" height="100">
                             @endif
                             <div class="card-body">
-                                <h5 class="card-title">{{ $article->titre }}</h5>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ route('article.details', ['id' => $article->id]) }}" class="btn btn-primary" id="details-button">
+                                        Détails
+                                        <svg aria-hidden="true" fill="none" focusable="false" height="20" viewBox="0 0 20 20" width="20" id="cds-react-aria-30" class="css-0"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.793 9.5L9.646 2.354l.708-.708L18.707 10l-8.353 8.354-.708-.707 7.147-7.147H2v-1h14.793z" fill="currentColor"></path></svg>
+                                    </a>
+                                </div>
+                                <h5 class="card-text">{{ $article->titre }}</h5>
                                 <p class="card-text">{{ $article->contenu }}</p>
                                 <p class="card-text"><small class="text-muted">{{ $article->datePublication }}</small></p>
                                 <p class="card-text"><small class="text-muted">Auteur: {{ $article->auteur }}</small></p>
@@ -42,6 +49,11 @@
                         </div>
                     </div>
                 @endforeach
+                @else
+                <div class="col-md-12">
+                    <p>Aucun article n'a été trouvé.</p>
+                </div>
+                @endif
             </div>
 
             <!-- Pagination links -->

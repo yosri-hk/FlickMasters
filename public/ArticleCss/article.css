@@ -64,7 +64,7 @@
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    height: 450px;
+    height:550px;
 }
 
 .card img {
@@ -74,16 +74,17 @@
     border-top-right-radius: 5px;
 }
 
-.card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
 
 .card-text {
     font-size: 1rem;
-    margin-bottom: 10px;
 }
+
+
+#details-button {
+    margin-bottom: 25px;
+}
+
+
 
 .card-footer {
     background-color: #f7f7f7;
@@ -91,6 +92,7 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 10px;
+    margin-top: 50px;
 }
 
 .btn-group {
@@ -120,6 +122,12 @@
 .custom-pagination .pagination li:last-child {
     display: none;
 }
+
+
+#btn-up {
+    margin-right:20px;
+}
+
 
 
 

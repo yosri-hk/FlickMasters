@@ -52,6 +52,19 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    
+                    <div class="mb-3">
+                        <label for="categories" class="form-label">Catégories de l'article</label>
+                        @foreach($categories as $categorie)
+                        <div class="form-check">
+                           <input class="form-check-input" type="checkbox" id="categorie-{{ $categorie->id }}" name="categories[]" value="{{ $categorie->id }}">
+                           <label class="form-check-label" for="categorie-{{ $categorie->id }}">
+                                {{ $categorie->name }}
+                           </label>
+                        </div>
+                        @endforeach
+                    </div>
+
                     <button type="submit" class="btn btn-primary" style="margin-right:20px">Ajouter</button>
                     <a class="btn btn-warning" href="/articles">Revenir à la liste d'articles</a>
                 </form>

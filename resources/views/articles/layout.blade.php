@@ -56,6 +56,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/articles" class="nav-link">Article</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/categories" class="nav-link">Categorie</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -184,7 +187,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin" class="brand-link">
+    <a href="/" class="brand-link">
       <img src="/dist/img/AdminLTELogo.png" alt="FlickMasters" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">FlickMasters</span>
     </a>
