@@ -92,6 +92,7 @@ Route::delete('/deleteArticle/{article}/delete',[ArticleController::class,'delet
 
 //Products 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/listProducts', [ProductController::class, 'listProducts'])->name('products.listProducts');
 
 
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
@@ -99,8 +100,10 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::get('/products/{id}', [ProductController::class, 'details'])->name('products.details');
 
 Route::delete('/products/{product}', [ProductController::class, 'delete'])->name('products.delete');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 // categorieProducts 
 

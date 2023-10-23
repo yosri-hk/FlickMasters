@@ -1,4 +1,3 @@
-@extends('layouts.app') {{-- Update to your actual layout file --}}
 
 @section('content')
 

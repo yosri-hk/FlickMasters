@@ -7,7 +7,18 @@ use App\Models\Product;
 use App\Models\CategorieProduct; 
 
 class ProductController extends Controller
+
 {
+    public function details($id)
+{
+    $product = Product::find($id);
+
+    if ($product) {
+        return view('products.details', ['product' => $product]);
+    }
+
+}
+
     public function index() {
         $products = Product::with('categorieProduct')->get();
         return view("products.index", ['products' => $products]);
@@ -77,4 +88,14 @@ $product->save();
         $product->delete();
         return redirect(route('products.index'))->with('success', "Product deleted successfully");
     }
+    public function listProducts() {
+        $products = Product::with('categorieProduct')->get();     
+           return view("products.listProducts", ['products' => $products]);
+    }
+    public function destroy(Product $product) {
+        $product->delete();
+        return redirect(route('products.listProducts'))->with('success', "Product deleted successfully");
+    }
+
+    
 }

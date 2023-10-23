@@ -1,68 +1,145 @@
-@extends('layouts.app')
+<style>
+    .product-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px;
+    }
 
-@section('content')
+    .product-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .product-buttons {
+        margin-top: 10px;
+    }
+
+    .product-buttons a {
+        margin-right: 5px;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlickMasters</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+
+
+  <!-- bootstrap mta3i -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- bootstrap mta3i -->  
+  <link href="{{ asset('ArticleCss/article.css') }}" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="FlickMasters" height="60" width="60">
+  </div>
 <div class="container" id="container">
-    <div class="row justify-content-center">
-        <div class="col-md-9">
-            <h1 class="text-center">Liste de Produits</h1>
-            <hr>
-            <div class="d-flex justify-content-center">
-                <a href="{{ route('products.create') }}" class="btn btn-info" id="btn">Ajouter un produit</a>
-            </div>
-            <hr>
-            @if (session("status"))
-            <div class="alert alert-success">
-                {{ session("status") }}
-            </div>
-            @endif
-            <div class="row">
-              @if (count($products) > 0)
-                @foreach($products as $product)
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            @if ($product->image_url)
-                            <img src="{{ asset($product->image_url) }}" alt="Product Image" width="100" height="100">
-                            @endif
-                            <div class="card-body">
-                                <div class="d-flex justify-content-end">
-                                    <a href="{{ route('products.details', ['product' => $product]) }}" class="btn btn-primary" id="details-button">
-                                        Détails
-                                        <svg aria-hidden="true" fill="none" focusable="false" height="20" viewBox="0 0 20 20" width="20" id="cds-react-aria-30" class="css-0">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.793 9.5L9.646 2.354l.708-.708L18.707 10l-8.353 8.354-.708-.707 7.147-7.147H2v-1h14.793z" fill="currentColor"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                                <h5 class="card-text">Nom: {{ $product->name }}</h5>
-                                <p class="card-text">Description: {{ $product->description }}</p>
-                                <p class="card-text">Prix: {{ $product->price }}</p>
-                                <p class="card-text">Quantité: {{ $product->quantity }}</p>
-                                <p class="card-text"><small class="text-muted">Poids: {{ $product->weight }}</small></p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="btn-group" role="group" aria-label="Actions">
-                                    <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-primary" id="btn">Modifier</a>
-                                    <form method="post" action="{{ route('products.destroy', ['product' => $product]) }}">
-                                        @csrf
-                                        @method("delete")
-                                        <input type="submit" value="Supprimer" class="btn btn-danger" id="btn">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                @else
-                <div class="col-md-12">
-                    <p>Aucun produit n'a été trouvé.</p>
-                </div>
-                @endif
-            </div>
+    <h1 class="text-center">Liste de Produits</h1>
+    <hr>
 
-            <!-- Pagination links -->
-            <div class="d-flex justify-content-center">
-                {{ $products->onEachSide(1)->links('pagination::bootstrap-4', ['class' => 'custom-pagination']) }}
+    <div class="row">
+        @if (count($products) > 0)
+            @foreach($products as $product)
+                <div class="col-md-4 mb-4">
+                    <div class="product-card">
+                        @if ($product->image_url)
+                            <img src="{{ asset('storage/images/' . $product->image_url) }}" alt="Product Image" class="product-image">
+                        @endif
+                        <div style="margin-top: 10px;">
+                            <h5>Nom: {{ $product->name }}</h5>
+                            <p>Description: {{ $product->description }}</p>
+                            <p>Prix: {{ $product->price }}</p>
+                            <p>Quantité: {{ $product->quantity }}</p>
+                            <p><small>Poids: {{ $product->weight }}</small></p>
+                        </div>
+      <div class="product-buttons" style="margin-top: 10px;">
+    <a href="{{ route('products.details', ['id' => $product->id]) }}" class="btn btn-primary" style="margin-right: 20px;">Détails</a>
+    <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-primary" style="margin-right: 20px;">Modifier</a>
+  <div class="mb-3">
+</br>
+    <form method="post" action="{{ route('products.destroy', ['product' => $product]) }}">
+        @csrf
+        @method("delete")
+        <input type="submit" value="Supprimer" class="btn btn-danger">
+    </form>
+</div>
+</div>
+
+
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <div class="col-md-12">
+                <p>Aucun produit n'a été trouvé.</p>
             </div>
-        </div>
+        @endif
     </div>
 </div>
-@endsection
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<!-- <script src="/plugins/chart.js/Chart.min.js"></script> -->
+<!-- Sparkline -->
+<script src="/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<!-- <script src="/plugins/jqvmap/jquery.vmap.min.js"></script> -->
+<!-- <script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+<!-- jQuery Knob Chart -->
+<script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/dist/js/pages/dashboard.js"></script>
+</body>
+</html>
+
