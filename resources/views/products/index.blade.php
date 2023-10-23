@@ -278,29 +278,6 @@
         </ul>
           </li>
           <li class="nav-item">
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-shopping-bag"></i>              
-        <p>
-            Catégorie Produit
-            <i class="fas fa-angle-left right"></i>
-        </p>
-    </a>
-    <ul class="nav nav-treeview">
-        <li class="nav-item">
-            <a href="{{ route('categorieProducts.create') }}" class="nav-link"> <!-- Updated route for create -->
-                <i class="far fa-circle nav-icon"></i>
-                <p>Ajouter Catégorie Produit</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('categorieProducts.index') }}" class="nav-link"> <!-- Updated route for index -->
-                <i class="far fa-circle nav-icon"></i>
-                <p>Afficher Liste</p>
-            </a>
-        </li>
-    </ul>
-</li>
-          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -368,7 +345,7 @@
     <!-- /.content-header -->
 
 
-    <section class="content">
+<section class="content">
     <div class="container-fluid">
         <!-- Product listing -->
         <div class="row justify-content-center">
@@ -377,6 +354,7 @@
                 <hr>
                 <div class="d-flex justify-content-center">
                     <a href="{{ route('products.create') }}" class="btn btn-info">Ajouter un produit</a>
+                </a>
                 </div>
                 <hr>
                 @if (session("status"))
@@ -392,7 +370,6 @@
                             <th class="text-center">Prix</th>
                             <th class="text-center">Quantité</th>
                             <th class="text-center">Poids</th>
-                            <th class="text-center">Catégorie</th> <!-- Add this column -->
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
@@ -404,11 +381,10 @@
                             <td class="text-center">{{ $product->price }}</td>
                             <td class="text-center">{{ $product->quantity }}</td>
                             <td class="text-center">{{ $product->weight }}</td>
-                            <td class="text-center">{{ $product->categorieProduct->name ?? 'N/A' }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-primary" style="margin-right: 5px">Modifier</a>
-                                    <form method="post" action="{{ route('products.delete', ['product' => $product]) }}">
+                                     <a href="{{route('products.edit',['product'=>$product])}}" class="btn btn-primary" style="margin-right: 5px">Modifier</a>
+                                    <form method="post" action="{{route('products.delete',['product'=>$product])}}">
                                         @csrf
                                         @method("delete")
                                         <input type="submit" value="Supprimer" class="btn btn-danger">
@@ -423,7 +399,6 @@
         </div>
     </div>
 </section>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
         const articleMore = document.getElementById("article-more");

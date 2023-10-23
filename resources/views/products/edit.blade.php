@@ -278,29 +278,6 @@
         </ul>
           </li>
           <li class="nav-item">
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-shopping-bag"></i>              
-        <p>
-            Catégorie Produit
-            <i class="fas fa-angle-left right"></i>
-        </p>
-    </a>
-    <ul class="nav nav-treeview">
-        <li class="nav-item">
-            <a href="{{ route('categorieProducts.create') }}" class="nav-link"> <!-- Updated route for create -->
-                <i class="far fa-circle nav-icon"></i>
-                <p>Ajouter Catégorie Produit</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('categorieProducts.index') }}" class="nav-link"> <!-- Updated route for index -->
-                <i class="far fa-circle nav-icon"></i>
-                <p>Afficher Liste</p>
-            </a>
-        </li>
-    </ul>
-</li>
-          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>

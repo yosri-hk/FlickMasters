@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('quantity')->nullable();
             $table->decimal('weight', 10, 2)->nullable();
             $table->string('image_url')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable(); 
         });
     }
 
