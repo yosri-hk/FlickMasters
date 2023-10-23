@@ -16,6 +16,11 @@
   <!-- iCheck -->
 
 
+  <!-- bootstrap mta3i -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- bootstrap mta3i -->  
+  <link href="{{ asset('ArticleCss/article.css') }}" rel="stylesheet">
+
 
 
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -52,15 +57,7 @@
         <a href="/articles" class="nav-link">Article</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/stores" class="nav-link">Stores</a>
-      </li>
-
-      <li class="nav-item d-none d-sm-inline-block">
         <a href="/categories" class="nav-link">Categorie</a>
-        <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('stands.index') }}" class="nav-link"> Stands </a>
       </li>
     </ul>
 
@@ -200,11 +197,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="https://www.handmadetunisia.com/wp-content/uploads/2021/05/bouteuille-ceramique.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/am3-new.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Menu</a>
-
+          <a href="/admin" class="d-block">Amine Barguellil</a>
         </div>
       </div>
 
@@ -249,12 +245,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
               </li>
-              
               <li class="nav-item">
                 <a href="/articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -267,61 +262,21 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                Coupon
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/coupons/create" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Coupon</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/coupons" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List Coupon</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-shopping-bag"></i>              
-              <p>
                 Produit
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('products.create') }}" class="nav-link"> <!-- Add this line -->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ajouter Produit</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('products.index') }}" class="nav-link"> <!-- Add this line -->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Afficher Liste</p>
-                </a>
-            </li>
-        </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Ordre
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/orders" class="nav-link">
+                <a href="/pages/UI/general.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Ordre</p>
+                  <p>Ajouter Produit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/UI/icons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Liste</p>
                 </a>
               </li>
             </ul>
@@ -359,64 +314,17 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('events.create') }}" class="nav-link">
+                <a href="/pages/tables/simple.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Evenement</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('events.index') }}" class="nav-link">
+                <a href="/pages/tables/data.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-              Stand
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('stands.create') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Stand</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('stands.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Stand</p>
-                </a>
-              </li>
-            </ul>
-            <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-              Stores
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('stores.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stores</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('promotions.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>promotions</p>
-                </a>
-              </li>
-            </ul>
-          </li>
             </ul>
           </li>
         </ul>
@@ -432,9 +340,7 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
+        <h1 class="m-0">Dashboard</h1>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -443,20 +349,10 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-        </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+      <div class="row">
+      @yield('content')
+      </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>

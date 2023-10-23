@@ -13,10 +13,7 @@
                 @csrf
                 @method('PUT')
   
-                <div class="form-group">
-                  <label for="product_id">Product ID</label>
-                  <input type="text" name="product_id" class="form-control" value="{{ $order->product_id }}" required>
-                </div>
+                
   
   
                 <div class="form-group">

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('order_date');
             $table->string('delivery_address');
             $table->decimal('total_price', 10, 2);
-            $table->unsignedBigInteger('customer_id');
+
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('cart_id')->nullable();
             $table->integer('quantity');

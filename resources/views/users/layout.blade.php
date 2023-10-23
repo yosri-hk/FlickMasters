@@ -225,9 +225,9 @@
 								<li class="">
 									<a href="#home">Home</a>
 								</li>
+								<li class="nav-item d-none d-sm-inline-block"><a href="/articlelist">Article</a></li>
+								<li ><a  href="{{ route('participations.create') }}">Participer</a></li>
 								<li><a href="{{ route('stores.show', ['store' => $store]) }}">Stores</a></li>
-								<li class="smooth-menu"><a href="#service">Service</a></li>
-								<li class="smooth-menu"><a href="#project">Project</a></li>
 								<li class="smooth-menu"><a href="#team">Team</a></li>
 								<li class="smooth-menu"><a href="#blog">Blog</a></li>
 								<li class="smooth-menu"><a href="#contact">Contact</a></li>

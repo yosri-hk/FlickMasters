@@ -1,0 +1,164 @@
+#container {
+    text-align: center;
+    padding: 20px;
+}
+
+#article-list-title {
+    font-size: 2rem;
+    color: #333;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#add-article-button {
+    margin-top: 20px;
+}
+
+
+#articles-list {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+
+.article {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 0 20px 0;
+    background: #fff;
+    width: calc(33.333% - 20px);
+    text-align: center;
+}
+
+#article-image {
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.article-content {
+    padding: 20px;
+}
+
+.article-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+
+.article-meta {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+
+.article-actions {
+    background-color: #f7f7f7;
+    border-top: 1px solid #ddd;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    background-size: cover;
+}
+
+#edit-button,
+#delete-button {
+    margin-right: 10px;
+    padding: 10px;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+#filter-form {
+    position: relative;
+    left:150px;
+}
+
+
+#filter-button {
+    position: relative;
+    top:90px;
+    right:400px;
+    margin-bottom: 50px;
+}
+
+
+#btn {
+    padding: 10px;
+}
+
+
+
+.btn-like {
+    background-color: blue;
+    color: white;
+}
+
+
+.btn-dislike {
+    background-color: red;
+    color: white;
+}
+
+
+
+
+.blue-icon {
+    color: blue;
+}
+
+
+.article-container {
+    display: flex;
+    align-items: center;
+}
+
+.article-description {
+    flex: 1;
+    margin: 0;
+}
+
+.article-description-full {
+    display: none;
+    flex: 1;
+    width: 20px; 
+    word-wrap: break-word;  
+}
+
+.article-links {
+    text-align: right; 
+}
+
+.read-more-link, .read-less-link {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 5px; 
+    margin-top: 22px;
+}
+
+
+
+
+
+
+
+
+
+
