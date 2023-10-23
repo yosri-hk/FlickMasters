@@ -139,6 +139,7 @@
 									<div class="contact-form">
 										<h3>Saisir vos informations</h3>
 										<form action="{{ route('participations.store') }}" method="POST">
+										@csrf
 											<div class="row">
 												<div class="col-sm-6 col-xs-12">
 													<div class="form-group">
