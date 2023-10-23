@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategorieProductController;
 
 
 /*
@@ -60,6 +61,18 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.e
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 
 Route::delete('/users/{user}',[UserController::class,'destroy'])->name('users.delete');
+
+
+Route::get('/categorieProducts', [CategorieProductController::class, 'index'])->name('categorieProducts.index');
+Route::get('/categorieProducts/create', [CategorieProductController::class, 'create'])->name('categorieProducts.create');
+Route::post('/categorieProducts', [CategorieProductController::class, 'store'])->name('categorieProducts.store');
+Route::get('/categorieProducts/{categorieProduct}/edit', [CategorieProductController::class, 'edit'])->name('categorieProducts.edit');
+Route::put('/categorieProducts/{categorieProduct}', [CategorieProductController::class, 'update'])->name('categorieProducts.update');
+Route::delete('/categorieProducts/{categorieProduct}', [CategorieProductController::class, 'delete'])->name('categorieProducts.delete');
+
+
+
+
 
 // Route configuration for Event entity
 Route::resource('events', EventController::class);

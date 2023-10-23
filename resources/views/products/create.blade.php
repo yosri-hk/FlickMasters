@@ -278,6 +278,29 @@
         </ul>
           </li>
           <li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-shopping-bag"></i>              
+        <p>
+            Catégorie Produit
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('categorieProducts.create') }}" class="nav-link"> <!-- Updated route for create -->
+                <i class="far fa-circle nav-icon"></i>
+                <p>Ajouter Catégorie Produit</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('categorieProducts.index') }}" class="nav-link"> <!-- Updated route for index -->
+                <i class="far fa-circle nav-icon"></i>
+                <p>Afficher Liste</p>
+            </a>
+        </li>
+    </ul>
+</li>
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -346,68 +369,87 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+    <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <!-- ajouter article -->
             <div id="ajouterContent">
-            <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <h1 class="text-center">Ajouter Votre Produit</h1>
-                <hr>
-                @if (session("status"))
-                <div class="alert alert-success">
-                  {{session("status")}}
-                </div>
-                @endif
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-9">
+                            <h1 class="text-center">Ajouter Votre Produit</h1>
+                            <hr>
+                            @if (session("status"))
+                            <div class="alert alert-success">
+                                {{ session("status") }}
+                            </div>
+                            @endif
 
+                            <div>
+                                @if($errors->any())
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
 
-                <div>
-        @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-               </ul>
-               @endif
-               </div>
-<form action="{{ isset($product) ? route('products.update', $product->id) : route('products.store') }}" method="POST">
-    @csrf
-    @if(isset($product))
-        @method('PUT') <!-- For editing an existing product -->
-    @endif
-    <div class="mb-3">
-        <label for="name" class="form-label">Product Name</label>
-        <input type="text" class="form-control" id="name" name="name" required value="{{ isset($product) ? $product->name : '' }}">
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description">{{ isset($product) ? $product->description : '' }}</textarea>
-    </div>
-    <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" class="form-control" id="price" name="price" required min="0" step="0.01" value="{{ isset($product) ? $product->price : '' }}">
-    </div>
-    <div class="mb-3">
-        <label for="quantity" class="form-label">Quantity</label>
-        <input type="number" class="form-control" id="quantity" name="quantity" required min="0" value="{{ isset($product) ? $product->quantity : '' }}">
-    </div>
-    <div class="mb-3">
-        <label for="weight" class="form-label">Weight</label>
-        <input type="number" class="form-control" id="weight" name="weight" min="0" value="{{ isset($product) ? $product->weight : '' }}">
-    </div>
-    <div class="mb-3">
-        <label for="image_url" class="form-label">Image URL</label>
-        <input type="url" class="form-control" id="image_url" name="image_url" value="{{ isset($product) ? $product->image_url : '' }}">
-    </div>
-    <button type="submit" class="btn btn-primary">{{ isset($product) ? 'Update' : 'Add' }} Product</button>
-    <a class="btn btn-warning" href="/products">Revenir à la liste de produits</a>
-</form>
+                            <form action="{{ isset($product) ? route('products.update', $product->id) : route('products.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @if(isset($product))
+                                @method('PUT') <!-- For editing an existing product -->
+                                @endif
 
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Product Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required value="{{ isset($product) ? $product->name : '' }}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea class="form-control" id="description" name="description">{{ isset($product) ? $product->description : '' }}</textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="price" class="form-label">Price</label>
+                                    <input type="number" class="form-control" id="price" name="price" required min="0" step="0.01" value="{{ isset($product) ? $product->price : '' }}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="quantity" class="form-label" >Quantity</label>
+                                    <input type="number" class="form-control" id="quantity" name="quantity" required min="0" value="{{ isset($product) ? $product->quantity : '' }}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="weight" class="form-label">Weight</label>
+                                    <input type="number" class="form-control" id="weight" name="weight" min="0" value="{{ isset($product) ? $product->weight : '' }}">
+                                </div>
+                                <div class="mb-3">
+    <label for="image_url" class="form-label">Image</label>
+    <input type="file" class="form-control" id="image_url" name="image_url" accept="image/*">
 </div>
+
+
+
+                                <!-- Add the category selection dropdown here -->
+                                <select class="form-control" id="category_id" name="category_id">
+    @foreach($categories as $category)
+        <option value="{{ $category->id }}" style="color: black;">{{ $category->name }}</option>
+    @endforeach
+</select>
+
+                                <button type="submit" class="btn btn-primary">{{ isset($product) ? 'Update' : 'Add' }} Product</button>
+                                <a class="btn btn-warning" href="{{ route('products.index') }}">Revenir à la liste de produits</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</section>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
             </div>
             <!-- ajouter article -->
