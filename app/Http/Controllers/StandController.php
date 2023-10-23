@@ -14,15 +14,10 @@ class StandController extends Controller
         $stands = Stand::all();
         return view('stands.index', compact('stands'));
     }
-/* 
-    public function create()
-    {
-        return view('stands.create');
-    } */
 
     public function create()
 {
-    $events = Event::all(); // Remplacez "Event" par le nom de votre modèle d'événement
+    $events = Event::all();
     return view('stands.create', compact('events'));
 }
     
@@ -33,7 +28,7 @@ public function store(Request $request)
         'emplacement' => 'required',
         'tarif_de_location' => 'required',
         'status' => 'required',
-        'event_id' => 'required', // Assurez-vous que 'event_id' est un champ obligatoire
+        'event_id' => 'required',
     ]);
 
     Stand::create($request->all());
