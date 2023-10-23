@@ -370,7 +370,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+<br></br>
 <section class="content">
     <div class="container-fluid">
         <!-- Edit product -->

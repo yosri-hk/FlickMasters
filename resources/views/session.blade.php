@@ -119,7 +119,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="/Cart">
+									<a href="{{ route('Cart.show') }}">
 										<span class="lnr lnr-cart"></span>
 									</a>
 								</li>

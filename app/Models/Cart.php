@@ -32,18 +32,18 @@ public function orders()
 {
     return $this->hasMany(Order::class);
 }
-public function calculateSubtotalForOrders(array $orderIds)
-    {
-        $orders = Order::whereIn('id', $orderIds)->get();
+// public function calculateSubtotalForOrders(array $orderIds)
+//     {
+//         $orders = Order::whereIn('id', $orderIds)->get();
     
-        $subtotal = 0;
+//         $subtotal = 0;
     
-        foreach ($orders as $order) {
-            $subtotal += $order->total_price;
-        }
+//         foreach ($orders as $order) {
+//             $subtotal += $order->total_price;
+//         }
     
-        return $subtotal;
-    }
+//         return $subtotal;
+//     }
 
 
 }

@@ -154,9 +154,10 @@ Route::get('/carts',[CartController::class,"index"])->name('Cart.indexlist');
 Route::get('/carts/create',[CartController::class,"create"])->name('Cart.create');
 Route::get('/carts/create1',[CartController::class,"create1"])->name('Cart.add');
 Route::post('/carts',[CartController::class,"store"])->name('Cart.store');
-
+Route::get('/carts/{cart}/edit1',[CartController::class,"edit1"])->name('Cart.updated');
 Route::get('/carts/{cart}/edit',[CartController::class,"edit"])->name('Cart.edit');
 Route::put('/carts/{cart}',[CartController::class,"update"])->name('Cart.update');
+//Route::put('/carts/{cart}',[CartController::class,"update1"])->name('Cart.update1');
 Route::get('/search', [CartController::class,"search"])->name('search');
 
 Route::get('/carts/show', [CartController::class, 'show'])->name('Cart.show');

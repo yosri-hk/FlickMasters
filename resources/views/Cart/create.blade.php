@@ -436,7 +436,7 @@ $allOrders = App\Models\Order::all();
    
 <div class="mb-3">
     <label for="subtotal" class="form-label">Subtotal</label>
-    <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ isset($cart) ? $cart->calculateSubtotalForOrders() : 567}}" hidden>
+    <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ isset($cart) ?  : 567}}" hidden>
 </div>
 
 
