@@ -14,13 +14,9 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
+  
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
-
-
-
-
-
 
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
@@ -222,7 +218,7 @@
           <!-- Dashboard -->
             <!-- Liste Dashboard -->
           <!-- Dashboard -->
-          
+
           <!-- Widgets -->
           <!-- Layout options -->
           <li class="nav-item">
@@ -277,6 +273,30 @@
             </li>
         </ul>
           </li>
+          <li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-shopping-bag"></i>              
+        <p>
+            Catégorie Produit
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('categorieProducts.create') }}" class="nav-link"> <!-- Updated route for create -->
+                <i class="far fa-circle nav-icon"></i>
+                <p>Ajouter Catégorie Produit</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('categorieProducts.index') }}" class="nav-link"> <!-- Updated route for index -->
+                <i class="far fa-circle nav-icon"></i>
+                <p>Afficher Liste</p>
+            </a>
+        </li>
+    </ul>
+</li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -399,17 +419,26 @@
       </div>
       
       <div class="mb-3">
-        <label for="image_url" class="form-label">Image URL</label>
-        <input type="file" class="form-control" id="image_url" name="image_url" value="{{ isset($product) ? $product->image_url : '' }}">
-      </div>
-      <button type="submit" class="btn btn-primary">{{ isset($product) ? 'Update' : 'Add' }} Product</button>
-      <a class="btn btn-warning" href="/products">Revenir à la liste de produits</a>
-    </form>
+    <label for="image_url" class="form-label">Image</label>
+    <input type="file" class="form-control" id="image_url" name="image_url" accept="image/*">
+</div>
+<div class="mb-3">
 
+<select class="form-control" id="category_id" name="category_id">
+    @foreach($categories as $category)
+        <option value="{{ $category->id }}" style="color: black;">{{ $category->name }}</option>
+    @endforeach
+</select>
+</div>
 
+<button type="submit" class="btn btn-primary">{{ isset($product) ? 'Update' : 'Add' }} Product</button>
+                                <a class="btn btn-warning" href="{{ route('products.index') }}">Revenir à la liste de produits</a>
+                         
+                                </form>
 </div>
         </div>
     </div>
+</section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
             </div>
             <!-- ajouter article -->

@@ -14,6 +14,10 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="{{ asset('ArticleCss/Ajout.css') }}" rel="stylesheet">
+
+
 
 
 
@@ -50,20 +54,6 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/articles" class="nav-link">Article</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/products" class="nav-link">Products</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/stores" class="nav-link">Stores</a>
-      </li>
-
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/categories" class="nav-link">Categorie</a>
-        <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('stands.index') }}" class="nav-link"> Stands </a>
       </li>
     </ul>
 
@@ -193,7 +183,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link">
+    <a href="/admin" class="brand-link">
       <img src="/dist/img/AdminLTELogo.png" alt="FlickMasters" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">FlickMasters</span>
     </a>
@@ -203,11 +193,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="https://www.handmadetunisia.com/wp-content/uploads/2021/05/bouteuille-ceramique.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/rim_img.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin" class="d-block">Menu</a>
-
+          <a href="/admin" class="d-block">Rim Ben Saad </a>
         </div>
       </div>
 
@@ -233,7 +222,7 @@
           <!-- Dashboard -->
             <!-- Liste Dashboard -->
           <!-- Dashboard -->
-          
+
           <!-- Widgets -->
           <!-- Layout options -->
           <li class="nav-item">
@@ -252,39 +241,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
               </li>
-              
               <li class="nav-item">
                 <a href="/articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Modifier Article</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Coupon
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/coupons/create" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Coupon</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/coupons" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List Coupon</p>
                 </a>
               </li>
             </ul>
@@ -335,23 +300,7 @@
         </li>
     </ul>
 </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Ordre
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/orders" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List Ordre</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -385,64 +334,17 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('events.create') }}" class="nav-link">
+                <a href="/pages/tables/simple.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Evenement</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('events.index') }}" class="nav-link">
+                <a href="/pages/tables/data.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Liste</p>
                 </a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-              Stand
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('stands.create') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Stand</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('stands.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Stand</p>
-                </a>
-              </li>
-            </ul>
-            <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-              Stores
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('stores.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stores</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('promotions.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>promotions</p>
-                </a>
-              </li>
-            </ul>
-          </li>
             </ul>
           </li>
         </ul>
@@ -466,17 +368,63 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
+    <div class="container-fluid">
+        <!-- CategorieProduct listing -->
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <h1 class="text-center">Liste de Catégories de Produits</h1>
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ route('categorieProducts.create') }}" class="btn btn-info">Ajouter une catégorie de produits</a>
+                </div>
+                <hr>
+                @if (session("status"))
+                <div class="alert alert-success">
+                    {{ session("status") }}
+                </div>
+                @endif
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nom de la catégorie</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($categorieProducts as $categorieProduct)
+                        <tr class="categorie-product-row">
+                            <td class="text-center">{{ $categorieProduct->name }}</td>
+                            <td class="text-center">{{ $categorieProduct->description }}</td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a href="{{ route('categorieProducts.edit', ['categorieProduct' => $categorieProduct]) }}" class="btn btn-primary" style="margin-right: 5px">Modifier</a>
+                                    <form method="post" action="{{ route('categorieProducts.delete', ['categorieProduct' => $categorieProduct]) }}">
+                                        @csrf
+                                        @method("delete")
+                                        <input type="submit" value="Supprimer" class="btn btn-danger">
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            </div>
+            <!-- ajouter article -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          
+
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <!-- right col -->
