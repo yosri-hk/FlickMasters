@@ -393,6 +393,7 @@
                             <th class="text-center">Prix</th>
                             <th class="text-center">Quantité</th>
                             <th class="text-center">Poids</th>
+                            <th class="text-center">Category</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>

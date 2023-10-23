@@ -102,7 +102,7 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::get('/products/{id}', [ProductController::class, 'details'])->name('products.details');
 
-Route::delete('/products/{product}', [ProductController::class, 'delete'])->name('products.delete');
+Route::delete('/productss/{product}', [ProductController::class, 'delete'])->name('products.delete');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 // categorieProducts 

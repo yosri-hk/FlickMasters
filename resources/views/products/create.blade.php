@@ -423,7 +423,7 @@
     <input type="file" class="form-control" id="image_url" name="image_url" accept="image/*">
 </div>
 <div class="mb-3">
-
+<label for="Category" class="form-label">Category</label>
 <select class="form-control" id="category_id" name="category_id">
     @foreach($categories as $category)
         <option value="{{ $category->id }}" style="color: black;">{{ $category->name }}</option>
