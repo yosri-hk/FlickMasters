@@ -104,7 +104,7 @@
 								<li class="nav-item d-none d-sm-inline-block">
 									<a href="/">Home</a>
 								</li>
-								<li class="nav-item d-none d-sm-inline-block"><a href="//productss">Products</a></li>
+								<li class="nav-item d-none d-sm-inline-block"><a href="/listProducts">Products</a></li>
 
 								<li class="nav-item d-none d-sm-inline-block"><a href="/articlelist">Article</a></li>
 

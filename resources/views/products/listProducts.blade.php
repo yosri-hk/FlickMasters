@@ -66,6 +66,7 @@
 <div class="container" id="container">
     <h1 class="text-center">Liste de Produits</h1>
     <hr>
+    <input type="text" id="product-filter" placeholder="Filter by Product Name" class="form-control" style="margin-bottom: 10px;">
 
     <div class="row">
         @if (count($products) > 0)
@@ -73,7 +74,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="product-card">
                         @if ($product->image_url)
-                            <img src="{{ asset('storage/images/' . $product->image_url) }}" alt="Product Image" class="product-image">
+                            <img src="{{ $product->image_url }}" alt="Product Image" class="product-image">
                         @endif
                         <div style="margin-top: 10px;">
                             <h5>Nom: {{ $product->name }}</h5>
@@ -143,4 +144,23 @@
 <script src="/dist/js/pages/dashboard.js"></script>
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#product-filter').on('input', function () {
+        var filter = $(this).val().toLowerCase();
+        $('.product-card').each(function () {
+            var productName = $(this).find('h5').text().toLowerCase();
+            if (productName.includes(filter)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
+</script>
+
+
 

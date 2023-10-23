@@ -371,32 +371,73 @@
                             @endif
                         </div>
 
-                        <form action="{{ route('products.update', ['product' => $product]) }}" method="POST">
-                            @csrf
-                            @method('PUT') <!-- Use the appropriate HTTP method (PUT) for updating -->
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nom du produit</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" name="description" required>{{ $product->description }}</textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="price" class="form-label">Prix</label>
-                                <input type="text" class="form-control" id="price" name="price" value="{{ $product->price }}" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="quantity" class="form-label">Quantité</label>
-                                <input type="text" class="form-control" id="quantity" name="quantity" value="{{ $product->quantity }}" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="weight" class="form-label">Poids</label>
-                                <input type="text" class="form-control" id="weight" name="weight" value="{{ $product->weight }}">
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="margin-right: 20px">Modifier</button>
-                            <a class="btn btn-warning" href="/products">Revenir à la liste de produits</a>
-                        </form>
+                        <form action="{{ route('products.update', ['product' => $product]) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nom du produit</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" required>
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description du produit</label>
+                            <textarea class="form-control" id="description" name="description" required>{{ $product->description }}</textarea>
+                            @error('description')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Prix du produit</label>
+                            <input type="text" class="form-control" id="price" name="price" value="{{ $product->price }}" required>
+                            @error('price')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantité en stock</label>
+                            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ $product->quantity }}" required>
+                            @error('quantity')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="weight" class="form-label">Poids du produit</label>
+                            <input type="number" class="form-control" id="weight" name="weight" value="{{ $product->weight }}" required>
+                            @error('weight')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image du produit</label>
+                            <input type="file" class="form-control" id="image" name="image" >
+                            @error('image')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+        <label for="category_id" class="form-label">Catégorie du produit</label>
+        <select class="form-control" id="category_id" name="category_id" required>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ $category->id == $product->categorieProduct->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+            @endforeach
+        </select>
+        @error('category_id')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+                        <button type="submit" class="btn btn-primary" style="margin-right: 20px">Modifier</button>
+                        <a class="btn btn-warning" href="{{ route('products.listProducts') }}">Revenir à la liste de produits</a>
+                    </form>
                     </div>
                 </div>
             </div>
