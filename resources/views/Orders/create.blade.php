@@ -196,7 +196,11 @@
                                     {{ session("status") }}
                                 </div>
                                 @endif
-
+                                @if (session("success"))
+                                <div class="alert alert-success">
+                                 {{ session("success") }}
+                                    </div>
+                                @endif
                                 <!-- Display validation errors -->
                                 @if($errors->any())
                                 <ul>
@@ -219,8 +223,8 @@
                                     
 
                                     <div class="form-group">
-                                        <label for "product_id">Product ID</label>
-                                        <input type="text" name="product_id" class="form-control" required>
+                                       
+                                        <input type="hidden"  name="product_id" value="<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>">
                                     </div>
                                     <br>
 
