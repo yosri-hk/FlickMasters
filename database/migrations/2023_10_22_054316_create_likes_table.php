@@ -9,20 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
-    
-
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->string('titre');
-            $table->text('contenu');
-            $table->date('datePublication');
-            $table->string('auteur');
-            $table->string('image');
-            $table->integer('like_count')->default(0);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('article_id');
             $table->timestamps();
+
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('likes');
     }
 };

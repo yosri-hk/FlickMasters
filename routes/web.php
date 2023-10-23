@@ -5,15 +5,19 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+
+use App\Http\Controllers\CategorieArticleController;
+use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\ParticipationController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\FrontCartController;
+
 
 
 
@@ -29,21 +33,53 @@ use App\Http\Controllers\FrontCartController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
+
+Route::get('/',[ArticleController::class,"home"])->name('home');
+
+
+Route::post('/register', [UserController::class,"register"])->name('register');
+
+Route::post('/login', [UserController::class,"login"])->name('login');
+
+// Route::get('/logout', [UserController::class,"logout"])->name('logout');
+
+Route::get('/session', [UserController::class,"session"])->name('session');
+
+Route::get('/articlelist',[ArticleController::class,"index"])->name('index');
+
+
 //   Route::get('/Cart', function index () {
 //       return view('Cart.Cartt');
 //  });
 
 Route::get('/Cart',[CartController::class,"index"])->name('Cartt');
 
+
 Route::get('/admin', function () {
     return view('Admin');
 });
 
 
+
+Route::get('/categories',[CategorieArticleController::class,"liste_categories"])->name('categorie.liste');
+
+Route::get('/ajouterCategorie',[CategorieArticleController::class,"ajouterCategorie"])->name('categorie.ajouter');
+
+Route::post('/ajouterCategorie/traitement',[CategorieArticleController::class,"ajouterCategorieTraitement"])->name('categorie.ajouterCategorie');
+
+Route::get('/updateCategorie/{categorie}',[CategorieArticleController::class,"updateCategorie"])->name('categorie.edit');
+
+Route::post('/updateCategorie/{categorie}/traitement',[CategorieArticleController::class,"updateCategorieTraitement"])->name('categorie.update');
+
+Route::delete('/deleteCategorie/{categorie}/delete',[CategorieArticleController::class,'delete'])->name('categorie.delete');
+
+
+
+
 Route::get('/articles',[ArticleController::class,"liste_articles"])->name('article.liste');
+
+Route::get('/articles/{id}',[ArticleController::class,"details_articles"])->name('article.details');
 
 Route::get('/ajouterArticle',[ArticleController::class,"ajouterArticle"])->name('article.ajouter');
 Route::post('/ajouterArticle/traitement',[ArticleController::class,"ajouterArticleTraitement"])->name('article.ajouterTraitement');
@@ -144,4 +180,13 @@ Route::resource('stands', StandController::class);
 
 // Route configuration for Stand entity
 Route::resource('participations', ParticipationController::class);
+
+
+Route::post('/article/{article}/like',[ArticleController::class,'like'])->name('article.like');
+Route::post('/article/{article}/dislike', [ArticleController::class,'dislike'])->name('article.dislike');
+
+
+
+
+
 
