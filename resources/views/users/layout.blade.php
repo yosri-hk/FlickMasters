@@ -227,7 +227,7 @@
 								</li>
 								<li class="nav-item d-none d-sm-inline-block"><a href="/articlelist">Article</a></li>
 								<li ><a  href="{{ route('participations.create') }}">Participer</a></li>
-								<li><a href="{{ route('stores.show', ['store' => $store]) }}">Stores</a></li>
+								<li><a href="{{ route('stores.show') }}">Stores</a></li>
 								<li class="smooth-menu"><a href="#team">Team</a></li>
 								<li class="smooth-menu"><a href="#blog">Blog</a></li>
 								<li class="smooth-menu"><a href="#contact">Contact</a></li>

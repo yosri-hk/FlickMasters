@@ -60,10 +60,12 @@
 
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/categories" class="nav-link">Categorie</a>
-        <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('stands.index') }}" class="nav-link"> Stands </a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+      <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('participations.index') }}" class="nav-link"> Participations </a>
@@ -351,6 +353,23 @@
                 <a href="/orders" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Ordre</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Adresse
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/adresss" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Adresse</p>
                 </a>
               </li>
             </ul>
