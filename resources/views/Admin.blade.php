@@ -52,6 +52,10 @@
         <a href="/articles" class="nav-link">Article</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
+        <a href="/stores" class="nav-link">Stores</a>
+      </li>
+
+      <li class="nav-item d-none d-sm-inline-block">
         <a href="/categories" class="nav-link">Categorie</a>
         <a href="{{ route('events.index') }}" class="nav-link"> Événements </a>
       </li>
@@ -250,10 +254,34 @@
                   <p>Afficher Liste</p>
                 </a>
               </li>
+              
               <li class="nav-item">
                 <a href="/articles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Modifier Article</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Coupon
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/coupons/create" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Coupon</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/coupons" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List Coupon</p>
                 </a>
               </li>
             </ul>
@@ -290,12 +318,6 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/orders/create" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Ordre</p>
-                </a>
-              </li>
               <li class="nav-item">
                 <a href="/orders" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -371,6 +393,30 @@
                   <p>Afficher Stand</p>
                 </a>
               </li>
+            </ul>
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+              Stores
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('stores.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('promotions.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>promotions</p>
+                </a>
+              </li>
+            </ul>
+          </li>
             </ul>
           </li>
         </ul>
